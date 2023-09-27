@@ -24,21 +24,30 @@ namespace CondominiumProject.Controllers
                     return RedirectToAction("RootIndex", "Home");
 
                 case 0:
-                    // Las credenciales son inválidas, muestra un mensaje de error.
-                    ViewBag.Error = new ErrorHandler()
+                    validationResult = ValidateCredentialsUser(email, password);
+
+                    if (validationResult == 1)
                     {
-                        Title = "Invalid login",
-                        ErrorMessage = "Incorrect email or password",
-                        ActionMessage = "Go to login",
-                        Path = "/Login"
-                    };
-                    return View("ErrorHandler");
+                        return RedirectToAction("UserIndex", "Home"); 
+                    }
+                    else
+                    {
+                        ViewBag.Error = new ErrorHandler()
+                        {
+                            Title = "Invalid login",
+                            ErrorMessage = "Incorrect email or password",
+                            ActionMessage = "Go to login",
+                            Path = "/Login"
+                        };
+                        return View("ErrorHandler");
+                    }
 
                 default:
                     // Un resultado desconocido, maneja adecuadamente.
                     return View("Error");
             }
         }
+
 
         private int ValidateCredentialsRoot(string email, string password)
         {
@@ -49,6 +58,25 @@ namespace CondominiumProject.Controllers
             };
 
             var resultado = DatabaseHelper.ExecuteQuery("VerifyLoginRoot", queryParameters);
+
+            if (resultado.Rows.Count == 1)
+            {
+                return Convert.ToInt32(resultado.Rows[0]["Result"]);
+            }
+
+            // Resultado desconocido o error
+            return -2;
+        }
+
+        private int ValidateCredentialsUser(string email, string password)
+        {
+            var queryParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@Email", email),
+                new SqlParameter("@Password", password)
+            };
+
+            var resultado = DatabaseHelper.ExecuteQuery("VerifyLoginUser", queryParameters);
 
             if (resultado.Rows.Count == 1)
             {

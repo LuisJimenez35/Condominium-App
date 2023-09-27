@@ -39,9 +39,9 @@ The other level of user will be the security officers who will be able to:
 2.	To be able to filter by license plate number vehicles of the condominium owners that have free entry.
 3.	Review a visitation record per condominium owner to grant access.
 4.	Example:
-      a.	Visitor Karla Guzman arrives at the housing project in her black Toyota Rav4 vehicle and indicates that she is going to house 120 where Julian is staying.
-      b.	The officer must check the system and filter by house, license plate or name and verify that there is already a visitation record made to proceed with the opening of the gate.
-      c.	Otherwise, he will have to call the condominium owner directly to proceed with the opening of the gate.
+     - Visitor Karla Guzman arrives at the housing project in her black Toyota Rav4 vehicle and indicates that she is going to house 120 where Julian is staying.
+     - The officer must check the system and filter by house, license plate or name and verify that there is already a visitation record made to proceed with the opening of the gate.
+     - Otherwise, he will have to call the condominium owner directly to proceed with the opening of the gate.
 
 ## 🚨Additional requirement
 EasyPass

@@ -30,16 +30,25 @@ namespace CondominiumProject.Controllers
                     {
                         return RedirectToAction("UserIndex", "Home"); 
                     }
-                    else
+                    else 
                     {
-                        ViewBag.Error = new ErrorHandler()
+                        int validationResult2 = ValidateCredentialsGuard(email, password);
+
+                        if ( validationResult2 == 1)
                         {
-                            Title = "Invalid login",
-                            ErrorMessage = "Incorrect email or password",
-                            ActionMessage = "Go to login",
-                            Path = "/Login"
-                        };
-                        return View("ErrorHandler");
+                            return RedirectToAction("GuardIndex", "Home");
+                        }
+                        else
+                        {
+                            ViewBag.Error = new ErrorHandler()
+                            {
+                                Title = "Invalid login",
+                                ErrorMessage = "Incorrect email or password",
+                                ActionMessage = "Go to login",
+                                Path = "/Login"
+                            };
+                            return View("ErrorHandler");
+                        }
                     }
 
                 default:
@@ -87,7 +96,24 @@ namespace CondominiumProject.Controllers
             return -2;
         }
 
+        private int ValidateCredentialsGuard(string email, string password)
+        {
+            var queryParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@Email", email),
+                new SqlParameter("@Password", password)
+            };
 
+            var resultado = DatabaseHelper.ExecuteQuery("VerifyLoginGuard", queryParameters);
+
+            if (resultado.Rows.Count == 1)
+            {
+                return Convert.ToInt32(resultado.Rows[0]["Result"]);
+            }
+
+            // Resultado desconocido o error
+            return -2;
+        }
 
 
         // GET: LoginContriller/Details/5

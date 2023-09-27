@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj": {}
+    "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj": {
+    "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj",
+        "projectUniqueName": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj",
         "projectName": "CondominiumProject",
-        "projectPath": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj",
+        "projectPath": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj",
         "packagesPath": "C:\\Users\\LuisM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumProject\\CondominiumProject\\obj\\",
+        "outputPath": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

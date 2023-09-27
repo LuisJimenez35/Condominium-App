@@ -14,9 +14,9 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
-        public ActionResult Login(string email, string password)
+        public ActionResult LoginRoot(string email, string password)
         {
-            int validationResult = ValidateCredentials(email, password);
+            int validationResult = ValidateCredentialsRoot(email, password);
 
             switch (validationResult)
             {
@@ -39,7 +39,7 @@ namespace CondominiumProject.Controllers
                     ViewBag.Error = new ErrorHandler()
                     {
                         Title = "Invalid login",
-                        ErrorMessage = "Email not found",
+                        ErrorMessage = "User not found",
                         ActionMessage = "Go to login",
                         Path = "/Login"
                     };
@@ -51,7 +51,7 @@ namespace CondominiumProject.Controllers
             }
         }
 
-        private int ValidateCredentials(string email, string password)
+        private int ValidateCredentialsRoot(string email, string password)
         {
             var queryParameters = new List<SqlParameter>
             {

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\CondominiumProject.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\119010622.png",
+      "PackagePath": "staticwebassets\\AppImages\\119010622.png"
+    },
+    {
       "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ImagePrincipal.jpeg",
       "PackagePath": "staticwebassets\\AppImages\\ImagePrincipal.jpeg"
     },

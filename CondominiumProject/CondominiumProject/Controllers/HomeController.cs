@@ -13,10 +13,22 @@ namespace CondominiumProject.Controllers
 			_logger = logger;
 		}
 
-		public IActionResult Index()
+		//Ventana de usuario Root
+		public IActionResult RootIndex()
 		{
 			return View();
 		}
+		//Ventana Guardia Seguridad
+		public IActionResult GuardIndex()
+		{
+			return View();
+		}
+		//Ventana Usuario basico
+		public IActionResult UserIndex()
+		{
+			return View();
+		}
+
 
 		public IActionResult Privacy()
 		{

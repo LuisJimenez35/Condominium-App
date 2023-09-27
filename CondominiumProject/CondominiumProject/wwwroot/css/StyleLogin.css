@@ -66,6 +66,22 @@ body {
         color: #3417b6;
     }
 
+    .card h4{
+        font-weight:bold;
+        color:cadetblue;
+    }
+
+        .card h4:hover {
+            color: #3417b6;
+        }
+
+    .card .text_red{
+        color:red;
+        font-family:Courier New, Courier, monospace;
+        font-size:14px;
+    }
+
+
 .logincard {
     width: 100%; /* Aseguramos que la tarjeta de inicio de sesión ocupe todo el ancho */
     max-width: 400px; /* Ancho máximo de la tarjeta de inicio de sesión */

@@ -14,14 +14,14 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
-        public ActionResult LoginRoot(string email, string password)
+        public ActionResult Login(string email, string password)
         {
             int validationResult = ValidateCredentialsRoot(email, password);
 
             switch (validationResult)
             {
                 case 1:
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RootIndex", "Home");
 
                 case 0:
                     // Las credenciales son inválidas, muestra un mensaje de error.
@@ -29,17 +29,6 @@ namespace CondominiumProject.Controllers
                     {
                         Title = "Invalid login",
                         ErrorMessage = "Incorrect email or password",
-                        ActionMessage = "Go to login",
-                        Path = "/Login"
-                    };
-                    return View("ErrorHandler");
-
-                case -1:
-                    // El correo electrónico no existe en la base de datos, muestra un mensaje de error.
-                    ViewBag.Error = new ErrorHandler()
-                    {
-                        Title = "Invalid login",
-                        ErrorMessage = "User not found",
                         ActionMessage = "Go to login",
                         Path = "/Login"
                     };
@@ -69,6 +58,8 @@ namespace CondominiumProject.Controllers
             // Resultado desconocido o error
             return -2;
         }
+
+
 
 
         // GET: LoginContriller/Details/5

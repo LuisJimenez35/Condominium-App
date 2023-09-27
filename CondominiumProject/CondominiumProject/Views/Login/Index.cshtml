@@ -8,28 +8,29 @@
             <div class="col-sm-6 col-md-8">
                 <div class="logincard">
                     <div class="card" style="width: 18rem;">
-                        <form asp-controller="Login" asp-action="LoginRoot">
+                        <form asp-controller="Login" asp-action="Login">
                             <br>
+                            <h4>Iniciar Secion</h4>
                             <img class="img_card_login" src="~/AppImages/LoginIMG-removebg-preview-modified.png" alt="">
                             <div class="card-body">
-
                                 <div class="form-floating mb-3">
                                     <input name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                                    <label for="floatingInput">Email address</label>
+                                    <label for="floatingInput">Email addres</label>
                                 </div>
                                 <div class="form-floating">
                                     <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                                     <label for="floatingPassword">Password</label>
                                 </div>
                             </div>
+
+                            <div>
+                                <p class="text_red">Coloque todos los datos que se le solicitan</p>
+                            </div>
+                            
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success">Iniciar Secion</button>
                             </div>
                         </form>
-                        <div class="card-footer">
-                            <p>Si no tienes cuenta podes registrarte en este boton</p>
-                            <button type="button" class="btn btn-dark">Registrarse</button>
-                        </div>
                     </div>
                 </div>
             </div>

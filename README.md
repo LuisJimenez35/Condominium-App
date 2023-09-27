@@ -51,6 +51,7 @@ The EasyPass is a QR Code (based on a 4-digit number) that can be shared with th
 ## 💻Software Available:
 - C#
   - ASP MVC
+- SQL Server
 - HTML5
 - CSS3
 - Java Script

@@ -1,0 +1,86 @@
+﻿/* Estilos comunes para todos los dispositivos */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #032b57 20%, #fff 20%, #fff 40%, #FF0000 40%, #FF0000 60%, #fff 60%, #fff 80%, #032b57 80%);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Cambia la dirección de las columnas en dispositivos móviles */
+    background-size: 100% 100%;
+    text-align: center;
+    min-height: 100vh; /* Cambia a min-height para permitir desplazamiento */
+}
+
+    .container p {
+        font-size: 13px;
+        color: #000;
+        font-family: monospace;
+        font-weight: bold;
+    }
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px; /* Espaciado entre las tarjetas */
+    width: 100%;
+    max-width: 400px; /* Ancho máximo de las tarjetas */
+    border: 1px solid #000;
+}
+
+    .card .img_card_login {
+        width: 50%;
+        height: 50%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 50%;
+        border: 2px solid #000;
+    }
+
+    .card p {
+        font-size: 15px;
+        color: #000;
+        font-family: monospace;
+        font-weight: bold;
+    }
+
+    .card h5 {
+        font-size: 30px;
+        color: #6e6b6b;
+        font-family: monospace;
+        font-weight: bold;
+    }
+
+    .card input {
+        border: 1px solid #000;
+    }
+
+    .card h5:hover {
+        color: #3417b6;
+    }
+
+.logincard {
+    width: 100%; /* Aseguramos que la tarjeta de inicio de sesión ocupe todo el ancho */
+    max-width: 400px; /* Ancho máximo de la tarjeta de inicio de sesión */
+    margin-left: 50px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 10px 0; /* Espaciado entre las tarjetas en dispositivos móviles */
+        flex-direction: column; /* Cambia la dirección de los elementos dentro de las tarjetas en dispositivos móviles */
+        align-items: center; /* Centra verticalmente los elementos en dispositivos móviles */
+        margin-left: 40px; /* Elimina el margen izquierdo */
+    }
+
+    .logincard {
+        margin-top: 10px; /* Añade un margen superior para separar las tarjetas en dispositivos móviles */
+    }
+}

@@ -1,0 +1,52 @@
+﻿<head>
+    <link rel="stylesheet" href="~/css/StyleLogin.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row g-0 text-center">
+            <div class="col-sm-6 col-md-8">
+                <div class="logincard">
+                    <div class="card" style="width: 18rem;">
+                        <form asp-controller="Login" asp-action="Login">
+                            <br>
+                            <img class="img_card_login" src="~/AppImages/LoginIMG-removebg-preview-modified.png" alt="">
+                            <div class="card-body">
+
+                                <div class="form-floating mb-3">
+                                    <input name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                                    <label for="floatingInput">Email address</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success">Iniciar Secion</button>
+                            </div>
+                        </form>
+                        <div class="card-footer">
+                            <p>Si no tienes cuenta podes registrarte en este boton</p>
+                            <button type="button" class="btn btn-dark">Registrarse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-6 col-md-4">
+                <div class="card" style="width: 30rem ;">
+                    <img src="~/AppImages/ImagePrincipal.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Conduminum APP</h5>
+                        <p>"La App Web que Revoluciona tu Estilo de Vida en Comunidad. ¡Simplifica tus Entradas y Salidas con un Toque de Innovación!"</p>
+                        <p class="card-text">Accede a una Experiencia Única de Control, Comodidad y Seguridad desde tu Condominio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+

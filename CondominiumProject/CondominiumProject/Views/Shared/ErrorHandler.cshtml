@@ -1,0 +1,16 @@
+﻿@* @{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">@ViewBag.Error.Title</h1>
+<h2 class="text-danger">@ViewBag.Error.ErrorMessage</h2>
+<a href="@ViewBag.Error.Path">@ViewBag.Error.ActionMessage</a> *@
+
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
+    <div>
+        <h1 class="text-danger">@ViewBag.Error.Title</h1>
+        <h2 class="text-danger">@ViewBag.Error.ErrorMessage</h2>
+        <a href="@ViewBag.Error.Path">@ViewBag.Error.ActionMessage</a>
+    </div>
+</div>

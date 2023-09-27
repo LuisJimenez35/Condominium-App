@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0rsZ9H0V0bgsrEhSrlZEgYPKilXH41WsINpLA5ZFNME=",
+  "Hash": "cdJjlepGi9gvVsZirtGJt9U7o9IjxIz8agL/D30p/fQ=",
   "Source": "CondominiumProject",
   "BasePath": "_content/CondominiumProject",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CondominiumProject.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\1134.jpg",
+      "SourceId": "CondominiumProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\",
+      "BasePath": "_content/CondominiumProject",
+      "RelativePath": "AppImages/1134.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AppImages\\1134.jpg"
     },
     {
       "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\119010622.png",

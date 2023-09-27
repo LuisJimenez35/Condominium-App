@@ -1,7 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-    <div class="container">
-        <p>Hola Root</p>
-    </div>
+<div class="text-center">
+
+	@if (ViewBag.RootHasAccessToProjects)
+	{
+		<div class="row">
+			@foreach (var habitational_project in ViewBag.ProjectLists)
+			{
+				<div class="card m-2" style="width: 18rem;">
+					<img src="../@habitational_project.Logo" class="card-img-top" style="width: 270px; height: 180px">
+					<div class="card-body">
+						<h5 class="card-title">@habitational_project.Name</h5>
+						<p class="card-text">@habitational_project.Code</p>
+						<p class="card-text">@habitational_project.Adress</p>
+						<p class="card-text">+506 @habitational_project.OfficeTelephone</p>
+						<a class="btn btn-primary">Acceder</a>
+					</div>
+				</div>
+			}
+		</div>
+	}
+</div>
 

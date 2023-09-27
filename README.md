@@ -20,15 +20,15 @@ Example.
 
 ## 📝Requirements for the CondominiumApp
 Therefore, as mentioned above, the root user can:
-1. create, edit and delete hosting projects (Logo, Code, Name, Name, Address, Office Phone) 2.
+1.  Create, edit and delete hosting projects (Logo, Code, Name, Name, Address, Office Phone) 2.
 2.	Create, edit and delete condominiums (ID, Name, Phone numbers (1 or more), Email, Photo).
 3.	Assign condominium owners to housing projects.
-4. 4. Create, edit and delete security guards.
+4.  Create, edit and delete security guards.
 5.	Send registration information to each condominium owner by email.
-6. 6. Listing of housing projects and condominium owners with basic filters.
+6.  Listing of housing projects and condominium owners with basic filters.
 
 The other level of user of the system will be the same condominium owner who will be able to:
-1. create, edit and delete visits (ID, Name, Vehicle {Make, Model and Color}).
+1.  Create, edit and delete visits (ID, Name, Vehicle {Make, Model and Color}).
 2.	Create, edit and delete favorite visits (ID, Name, Vehicle {Make, Model and Color}).
 3.	You will be able to create 'Delivery' type quick visits (UberEats, Didi, Rappi, PedidosYa, etc.).
 4.	Create one or more vehicles of your property that will have free access (License Plate, Make, Model and Color).
@@ -38,12 +38,12 @@ The other level of user will be the security officers who will be able to:
 1.	Officers will be able to choose the housing project they are working on that day.
 2.	To be able to filter by license plate number vehicles of the condominium owners that have free entry.
 3.	Review a visitation record per condominium owner to grant access.
-4.	Ex.
-a.	Visitor Karla Guzman arrives at the housing project in her black Toyota Rav4 vehicle and indicates that she is going to house 120 where Julian is staying.
-b.	The officer must check the system and filter by house, license plate or name and verify that there is already a visitation record made to proceed with the opening of the gate.
-c.	Otherwise, he will have to call the condominium owner directly to proceed with the opening of the gate.
+4.	Example:
+      a.	Visitor Karla Guzman arrives at the housing project in her black Toyota Rav4 vehicle and indicates that she is going to house 120 where Julian is staying.
+      b.	The officer must check the system and filter by house, license plate or name and verify that there is already a visitation record made to proceed with the opening of the gate.
+      c.	Otherwise, he will have to call the condominium owner directly to proceed with the opening of the gate.
 
-##🚨 Additional requirement
+## 🚨Additional requirement
 EasyPass
 The system will give the condominium owner the opportunity to make an EasyPass. 
 The EasyPass is a QR Code (based on a 4-digit number) that can be shared with the visitor. This code is valid for 12 hours and the visitor can, instead of talking to the security officer, scan their QR code or type in their EasyPass on a digital keypad. If the code is correct, it will give the visitor free passage or it will indicate that the code is incorrect.

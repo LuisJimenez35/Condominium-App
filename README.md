@@ -47,3 +47,10 @@ The other level of user will be the security officers who will be able to:
 EasyPass
 The system will give the condominium owner the opportunity to make an EasyPass. 
 The EasyPass is a QR Code (based on a 4-digit number) that can be shared with the visitor. This code is valid for 12 hours and the visitor can, instead of talking to the security officer, scan their QR code or type in their EasyPass on a digital keypad. If the code is correct, it will give the visitor free passage or it will indicate that the code is incorrect.
+
+## 💻Software Available:
+- C#
+  - ASP MVC
+- HTML5
+- CSS3
+- Java Script

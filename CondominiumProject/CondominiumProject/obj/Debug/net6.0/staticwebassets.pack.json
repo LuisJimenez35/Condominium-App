@@ -5,20 +5,20 @@
       "PackagePath": "staticwebassets\\CondominiumProject.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\1134.jpg",
-      "PackagePath": "staticwebassets\\AppImages\\1134.jpg"
-    },
-    {
-      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\119010622.png",
-      "PackagePath": "staticwebassets\\AppImages\\119010622.png"
-    },
-    {
       "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ImagePrincipal.jpeg",
       "PackagePath": "staticwebassets\\AppImages\\ImagePrincipal.jpeg"
     },
     {
-      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\LoginIMG-removebg-preview-modified.png",
-      "PackagePath": "staticwebassets\\AppImages\\LoginIMG-removebg-preview-modified.png"
+      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ProjectsImages\\1134.jpg",
+      "PackagePath": "staticwebassets\\AppImages\\ProjectsImages\\1134.jpg"
+    },
+    {
+      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ProjectsImages\\5567.jpg",
+      "PackagePath": "staticwebassets\\AppImages\\ProjectsImages\\5567.jpg"
+    },
+    {
+      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\UserImages\\119010622.png",
+      "PackagePath": "staticwebassets\\AppImages\\UserImages\\119010622.png"
     },
     {
       "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\css\\StyleLogin.css",

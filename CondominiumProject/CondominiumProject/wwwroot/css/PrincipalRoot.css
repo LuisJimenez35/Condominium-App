@@ -1,0 +1,8 @@
+﻿.tile_card {
+    font-weight: bold;
+    color: #0c065c;
+}
+
+button:hover {
+    font-weight: bold;
+}

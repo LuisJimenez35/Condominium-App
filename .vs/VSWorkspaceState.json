@@ -3,8 +3,10 @@
     "",
     "\\CondominiumProject",
     "\\CondominiumProject\\CondominiumProject",
-    "\\CondominiumProject\\CondominiumProject\\Controllers"
+    "\\CondominiumProject\\CondominiumProject\\Controllers",
+    "\\CondominiumProject\\CondominiumProject\\Views",
+    "\\CondominiumProject\\CondominiumProject\\Views\\Login"
   ],
-  "SelectedNode": "\\CondominiumProject\\CondominiumProject.sln",
+  "SelectedNode": "\\CondominiumProject\\CondominiumProject\\Views\\Login\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

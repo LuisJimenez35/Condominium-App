@@ -63,6 +63,23 @@ namespace CondominiumProject.Controllers
         //Ventana Guardia Seguridad
         public IActionResult GuardIndex()
 		{
+			ViewBag.RootHasAccessToProjects = true;
+
+			if (!ViewBag.RootHasAccessToProjects)
+			{
+				ViewBag.Error = new ErrorHandler()
+				{
+					Title = "Security validation",
+					ErrorMessage = "User do not have access to this page",
+					ActionMessage = "Go to login",
+					Path = "/Login"
+				};
+
+				return View("ErrorHandler");
+			}
+
+			ViewBag.ProjectLists = GetHabitationalProject();
+
 			return View();
 		}
 		//Ventana Usuario basico

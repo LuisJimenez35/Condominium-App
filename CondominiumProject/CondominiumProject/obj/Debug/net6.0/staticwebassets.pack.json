@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\AppImages\\UserImages\\119010622.png"
     },
     {
+      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\css\\PrincipalRoot.css",
+      "PackagePath": "staticwebassets\\css\\PrincipalRoot.css"
+    },
+    {
       "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\css\\StyleLogin.css",
       "PackagePath": "staticwebassets\\css\\StyleLogin.css"
     },

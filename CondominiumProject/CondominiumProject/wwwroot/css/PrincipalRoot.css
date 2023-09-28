@@ -6,3 +6,108 @@
 button:hover {
     font-weight: bold;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(https://th.bing.com/th/id/R.d958cbbda834837187a287d17def0c83?rik=GAwa0bM%2bpf2D7g&pid=ImgRaw&r=0);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-color: #ffffff;
+}
+
+nav .nav {
+    margin-left: -120px; /* Ajusta este valor según tus necesidades */
+    margin-right: -120px; /* Ajusta este valor según tus necesidades */
+}
+
+
+
+.nav a {
+    color: #0e5774;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+    .nav a:hover {
+        color: #318fb4;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+.user_center {
+    display: none;
+}
+
+.container1 {
+    display: none;
+}
+
+
+
+@media (max-width: 768px) {
+    header {
+        display: none;
+    }
+
+    .container1 {
+        display: block;
+        text-align: center;
+        position: fixed; /* Establece la posición fija */
+        bottom: 0; /* Coloca el pie de página en la parte inferior */
+        left: 0; /* Coloca el pie de página en la parte izquierda */
+        width: 100%; /* Establece el ancho al 100% del viewport */
+        background-color: #333; /* Cambia el color de fondo según tus preferencias */
+        color: #fff; /* Cambia el color del texto según tus preferencias */
+        padding: 10px; /* Agrega un espacio de relleno para el pie de página */
+        text-align: center; /* Centra el contenido del pie de página */
+        z-index: 999; /* Controla la superposición sobre otros elementos */
+    }
+
+        .container1 a {
+            color: #0e5774;
+            font-size: 11px;
+        }
+
+            .container1 a:hover {
+                color: #0e5774;
+                text-decoration: none;
+                font-weight: normal;
+            }
+
+    .user_center {
+        display: flex;
+        text-align: center;
+        position: fixed; /* Establece la posición fija */
+        width: 100%; /* Establece el ancho al 100% del viewport */
+        background-color: #eeeded; /* Cambia el color de fondo según tus preferencias */
+        color: #fff; /* Cambia el color del texto según tus preferencias */
+        text-align: center; /* Centra el contenido del pie de página */
+        z-index: 999; /* Controla la superposición sobre otros elementos */
+        border-radius: 3px;
+    }
+
+        .user_center .nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+
+            .user_center .nav a {
+                color: #0e5774;
+                font-size: 11px;
+            }
+
+                .user_center .nav a:hover {
+                    color: #0e5774;
+                    text-decoration: none;
+                    font-weight: normal;
+                }
+}

@@ -1,10 +1,18 @@
-﻿.tile_card {
-    font-weight: bold;
-    color: #0c065c;
-}
-
+﻿
 button:hover {
     font-weight: bold;
+}
+
+.card p{
+    font-family:'Times New Roman', Times, serif;
+    font-weight:bold;
+}
+
+.tile_card {
+    font-weight: bold;
+    color: #04083fc7;    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 body {
@@ -48,6 +56,9 @@ nav .nav {
     display: none;
 }
 
+.space-container{
+    display:none;
+}
 
 
 @media (max-width: 768px) {
@@ -90,6 +101,7 @@ nav .nav {
         text-align: center; /* Centra el contenido del pie de página */
         z-index: 999; /* Controla la superposición sobre otros elementos */
         border-radius: 3px;
+        
     }
 
         .user_center .nav {
@@ -97,7 +109,8 @@ nav .nav {
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
-            width: 100%;
+            width: 110%;
+            
         }
 
             .user_center .nav a {
@@ -110,4 +123,13 @@ nav .nav {
                     text-decoration: none;
                     font-weight: normal;
                 }
+
+    .space-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-top: 100px;
+    }
 }

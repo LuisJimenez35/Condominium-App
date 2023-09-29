@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HFY/KDKF3RcPqitR1M+Bzzo3v+T7yahyQ6tJFzoBiw0=",
+  "Hash": "pq2nfYWIPBvGT5H9BcUBkKI5I+1BW2SS/yhXI4wE/tk=",
   "Source": "CondominiumProject",
   "BasePath": "_content/CondominiumProject",
   "Mode": "Default",
@@ -100,6 +100,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AppImages\\ProjectsImages\\5567.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ProjectsImages\\6653.jpeg",
+      "SourceId": "CondominiumProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\",
+      "BasePath": "_content/CondominiumProject",
+      "RelativePath": "AppImages/ProjectsImages/6653.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AppImages\\ProjectsImages\\6653.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ProjectsImages\\7765.jpg",
+      "SourceId": "CondominiumProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\",
+      "BasePath": "_content/CondominiumProject",
+      "RelativePath": "AppImages/ProjectsImages/7765.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AppImages\\ProjectsImages\\7765.jpg"
     },
     {
       "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\UserImages\\119010622.png",

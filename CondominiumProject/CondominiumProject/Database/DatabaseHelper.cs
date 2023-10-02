@@ -39,7 +39,7 @@ namespace CondominiumProject.Database
                     return dt;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

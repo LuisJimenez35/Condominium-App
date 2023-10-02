@@ -3,6 +3,8 @@ using CondominiumProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace CondominiumProject.Controllers
 {
@@ -57,6 +59,12 @@ namespace CondominiumProject.Controllers
                     return View("Error");
             }
         }
+
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Index", "Login");
+            
+        }   
 
 
         private int ValidateCredentialsRoot(string email, string password)

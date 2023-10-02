@@ -31,10 +31,14 @@ namespace CondominiumProject.Controllers
 				return View("ErrorHandler");
 			}
 
-			ViewBag.ProjectLists = GetHabitationalProject();
+            ViewBag.ProjectLists = GetHabitationalProject();
 
-			return View();
-		}
+
+			ViewBag.email = Request.Query["email"].ToString();
+
+
+            return View();
+        }
 
 		public List<HabitationalProjects> GetHabitationalProject()
 		{
@@ -56,7 +60,6 @@ namespace CondominiumProject.Controllers
 			return projectslist;
 
 		}
-
 
 
 

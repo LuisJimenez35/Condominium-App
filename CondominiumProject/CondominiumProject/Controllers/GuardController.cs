@@ -33,7 +33,9 @@ namespace CondominiumProject.Controllers
 
 			ViewBag.ProjectLists = GetHabitationalProject();
 
-			return View();
+            ViewBag.email = Request.Query["email"].ToString();
+
+            return View();
 		}
 
 		public List<HabitationalProjects> GetHabitationalProject()

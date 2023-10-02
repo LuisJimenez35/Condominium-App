@@ -21,7 +21,7 @@ namespace CondominiumProject.Controllers
             switch (validationResult)
             {
                 case 1:
-                    return RedirectToAction("RootIndex", "Home");
+                    return RedirectToAction("RootIndex", "Root");
 
                 case 0:
                     validationResult = ValidateCredentialsUser(email, password);
@@ -36,7 +36,7 @@ namespace CondominiumProject.Controllers
 
                         if ( validationResult2 == 1)
                         {
-                            return RedirectToAction("GuardIndex", "Home");
+                            return RedirectToAction("GuardIndex", "Guard");
                         }
                         else
                         {

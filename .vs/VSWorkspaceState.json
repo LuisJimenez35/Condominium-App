@@ -5,6 +5,7 @@
     "\\CondominiumProject\\CondominiumProject",
     "\\CondominiumProject\\CondominiumProject\\Controllers",
     "\\CondominiumProject\\CondominiumProject\\Views",
+    "\\CondominiumProject\\CondominiumProject\\Views\\Home",
     "\\CondominiumProject\\CondominiumProject\\Views\\Login"
   ],
   "SelectedNode": "\\CondominiumProject\\CondominiumProject.sln",

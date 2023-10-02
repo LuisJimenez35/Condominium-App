@@ -16,12 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProject\CondominiumProject
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Home/GuardIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHdWFyZEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Home/RootIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSb290SW5kZXguY3NodG1s
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Guard/GuardIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VhcmRcR3VhcmRJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Home/UserIndex.cshtml]
@@ -30,6 +26,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Root/RootIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vdFxSb290SW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Shared/Error.cshtml]

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EtwX658wzEYc3pD8L8tgh+0nurB7xi3fI1DmXV7cVC8=",
+  "Hash": "cE0UJ8IGcQO4hnRZ8+8JDf4f9zS8V/2VBYQCcJCs0nM=",
   "Source": "CondominiumProject",
   "BasePath": "_content/CondominiumProject",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AppImages\\ProjectsImages\\1134.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ProjectsImages\\4432.jpg",
+      "SourceId": "CondominiumProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\",
+      "BasePath": "_content/CondominiumProject",
+      "RelativePath": "AppImages/ProjectsImages/4432.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AppImages\\ProjectsImages\\4432.jpg"
     },
     {
       "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\ProjectsImages\\5567.jpg",

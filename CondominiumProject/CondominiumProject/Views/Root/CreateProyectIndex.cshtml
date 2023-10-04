@@ -127,38 +127,40 @@
 
     <br>
 
-    <div class="text-center">
-        @if (ViewBag.RootHasAccessToProjects)
-        {
-            <div class="row">
-                @foreach (var habitational_project in ViewBag.ProjectLists)
-                {
-                    <div class="card m-2" style="width: 16rem;">
 
-                        <img src="../@habitational_project.Logo" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">@habitational_project.Name</h5>
-                            <p class="card-text-title"><p class="tile_card">Codigo Proyecto</p><p>@habitational_project.Code</p>
-                            <p class="card-text"><p class="tile_card">Direccion</p><p> @habitational_project.Adress</p>
-                            <p class="card-text">+506 @habitational_project.OfficeTelephone</p>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-outline-primary">Acceder a Proyecto</button>
-                        </div>
-                    </div>
-                }
+    <div class="container2 bg-light">
+        <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M.5 3.5A.5.5 0 0 1 1 .5h14a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H1a.5.5 0 0 1-.5-.5Zm1 .5v10h13v-10H1Zm1.5 1 5 2 5-2v9H3v-9Z" />
+            </svg> Crear Proyecto Nuevo
+        </h3>
+        <form asp-controller="Root" asp-action="CreateProject">
+            <div class="row p-1">
+                <div class="col">
+                    <input name="Name" type="text" class="form-control" placeholder="Nombre Proyecto" aria-label="Nombre Proyecto" required>
+                </div>
+                <div class="col">
+                    <input name="Adress" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" required>
+                </div>
+                <div class="col">
+                    <input name="Code" type="text" class="form-control" placeholder="Codigo" aria-label="Codigo" required>
+                </div>
+                <div class="col">
+                    <input name="OfficeTelephone" type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
+                    <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-success">Crear Proyecto</button>
+                </div>
             </div>
-        }
-
-    </div>
-
-    <footer class="bg-light">
-        <br>
-        <form asp-controller="Root" asp-action="CreateProyectIndex">
-            <button type="submit" class="btn btn-secondary">Crear Proyecto</button>
         </form>
-    </footer>
-
+    </div>
 
     <div class="space-container">
     </div>

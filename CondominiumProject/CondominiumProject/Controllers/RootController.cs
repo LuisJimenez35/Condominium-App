@@ -149,6 +149,57 @@ namespace CondominiumProject.Controllers
             }
         }       
 
+        // Funcion para eliminar un proyecto
+        public ActionResult DeleteProject(string Code)
+        {
+            int validationres = ValidateDeleteProjects(Code);
+
+            switch (validationres)
+            {
+                case 1:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Incorrect Data",
+                        ErrorMessage = "Ningun Proyecto Encontrado",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+                case 2:
+                    return RedirectToAction("RootIndex", "Root");
+                case 0:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Nada",
+                        ErrorMessage = "Nada",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+
+                default:
+                    return View("Error");
+            }
+        }
+
+        //Funcion para validar la eliminacion de un proyecto
+        private int ValidateDeleteProjects(string Code)
+        {
+            var queryParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@Code", Code)
+            };
+
+            var resultado = DatabaseHelper.ExecuteQuery("VerifyAndDeleteProjectData", queryParameters);
+
+            if (resultado.Rows.Count > 0)
+            {
+                return Convert.ToInt32(resultado.Rows[0]["Result"]);
+            }
+            return -2;
+        }
+
+
         //Funcion para validar la actualizacion de datos de un proyecto
         private int ValidateUpdateProjects(string Name, string Adress, string Code, string OfficeTelephone, string Logo)
         {
@@ -169,7 +220,6 @@ namespace CondominiumProject.Controllers
             }
             return -2;
         }       
-
 
         //Funcion para validar la insercion de un nuevo proyecto
         private int ValidateTableProjects(string Name, string Adress, string Code, string OfficeTelephone, string Logo)

@@ -124,55 +124,64 @@
         </ul>
     </div>
 
-
     <br>
 
-    <div class="text-center">
-        @if (ViewBag.RootHasAccessToProjects)
-        {
-            <div class="row">
-                @foreach (var habitational_project in ViewBag.ProjectLists)
-                {
-                    <div class="card m-2" style="width: 16rem;">
-                        <img src="../@habitational_project.Logo" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">@habitational_project.Name</h5>
-                            <p class="card-text-title"><p class="tile_card">Codigo Proyecto</p><p>@habitational_project.Code</p>
-                            <p class="card-text"><p class="tile_card">Direccion</p><p> @habitational_project.Adress</p>
-                            <p class="card-text">+506 @habitational_project.OfficeTelephone</p>
-                        </div>
-                        <div class="container overflow-hidden text-center">
-                            <div class="card-footer">
-                                <div class="row gx-5">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-outline-primary">Acceder a Proyecto</button>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <form asp-controller="Root" asp-action="EditProyectIndex" method="get">
-                                        <div class="col">
-                                            <button type="submit" class="btn btn-warning" name="projectCode" value="@habitational_project.Code">Editar este Proyecto</button>
-                                            <input type="hidden" name="projectName" value="@habitational_project.Name" />
-                                            <input type="hidden" name="projectAdress" value="@habitational_project.Adress" />
-                                            <input type="hidden" name="projectOfficeTelephone" value="@habitational_project.OfficeTelephone" />
-                                        </div>
-                                    </form>
-                                </div>
+    <div class="container2 bg-light">
+        <form asp-controller="Root" asp-action="EditProject">
+            <h3>Editar Proyecto</h3>
+            <h4>@ViewBag.ProjectCode</h4>
+            <div class="row p-1">
+                <div class="col">
+                    <input type="text" name="Code" value="@ViewBag.ProjectCode" readonly hidden />
+                </div>
+                <div class="col">
+                    <input name="Name" type="text" class="form-control" placeholder="@ViewBag.ProjectName" aria-label="Nombre Proyecto" required>
+                </div>
+                <div class="col">
+                    <input name="Adress" type="text" class="form-control" placeholder="@ViewBag.ProjectAdress" aria-label="Direccion" required>
+                </div>
+                <div class="col">
+                    <input name="OfficeTelephone" type="text" class="form-control" placeholder="+506 @ViewBag.ProjectTelephone" aria-label="Telefono" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
+                    <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
+                </div>
+
+                <div class="col">
+                    <div class="container overflow-hidden text-center">
+                        <div class="row gx-5">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Editar</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar Proyecto</button>
                             </div>
                         </div>
                     </div>
-                }
+                </div>
             </div>
-        }
+        </form>
     </div>
 
-    <footer class="bg-light">
-        <br>
-        <form asp-controller="Root" asp-action="CreateProyectIndex">
-            <button type="submit" class="btn btn-secondary">Crear Proyecto</button>
-        </form>
-    </footer>
 
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Proyecto </h1>
+                </div>
+                <div class="modal-body">
+                    Estas seguro que deseas eliminar el proyecto @ViewBag.ProjectCode?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="space-container">
     </div>
@@ -216,5 +225,8 @@
             </ul>
         </footer>
     </div>
+
+
+
 
 </body>

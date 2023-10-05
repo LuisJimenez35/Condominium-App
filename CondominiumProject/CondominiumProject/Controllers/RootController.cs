@@ -44,9 +44,24 @@ namespace CondominiumProject.Controllers
 
         public IActionResult CreateProyectIndex()
         {
+            ViewBag.email = Request.Query["email"].ToString();
+
             return View();
         }
 
+        public IActionResult EditProyectIndex()
+        {
+            ViewBag.email = Request.Query["email"].ToString();
+
+            ViewBag.ProjectCode = Request.Query["projectCode"].ToString();
+            ViewBag.ProjectName = Request.Query["projectName"].ToString();
+            ViewBag.ProjectAdress = Request.Query["projectAdress"].ToString();
+            ViewBag.ProjectTelephone = Request.Query["projectOfficeTelephone"].ToString();
+
+            return View();
+        }
+
+        //Funcion para obtener los proyectos habitacionales
         public List<HabitationalProjects> GetHabitationalProject()
         {
             List<HabitationalProjects> projectslist = new List<HabitationalProjects>();
@@ -68,6 +83,7 @@ namespace CondominiumProject.Controllers
 
         }
 
+        // Funcion pincipal para crear un proyecto nuevo
         public ActionResult CreateProject(string Name, string Adress, string Code, string OfficeTelephone, string Logo)
         {
             int validationResult = ValidateTableProjects(Name, Adress, Code, OfficeTelephone, Logo);
@@ -96,11 +112,66 @@ namespace CondominiumProject.Controllers
                     return View("ErrorHandler");
 
                 default:
-                    // Un resultado desconocido, maneja adecuadamente.
                     return View("Error");
             }
         }
 
+        // Funcion para editar un proyecto
+        public ActionResult EditProject(string Name, string Adress, string Code, string OfficeTelephone, string Logo)
+        {
+            int validationres = ValidateUpdateProjects(Name, Adress, Code, OfficeTelephone, Logo);
+
+            switch (validationres)
+            {
+                case 1:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Incorrect Data",
+                        ErrorMessage = "Datos duplicados",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+                case 2:
+                    return RedirectToAction("RootIndex", "Root");
+                case 0:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Nada",
+                        ErrorMessage = "Nada",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+
+                default:
+                    return View("Error");
+            }
+        }       
+
+        //Funcion para validar la actualizacion de datos de un proyecto
+        private int ValidateUpdateProjects(string Name, string Adress, string Code, string OfficeTelephone, string Logo)
+        {
+            var queryParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@Name", Name),
+                new SqlParameter("@Adress", Adress),
+                new SqlParameter("@Code", Code),
+                new SqlParameter("@OfficeTelephone", OfficeTelephone),
+                new SqlParameter("@Logo", "/AppImages/ProjectsImages/" + Logo)
+            };
+
+            var resultado = DatabaseHelper.ExecuteQuery("VerifyAndUpdateProjectData", queryParameters);
+
+            if (resultado.Rows.Count > 0)
+            {
+                return Convert.ToInt32(resultado.Rows[0]["Result"]);
+            }
+            return -2;
+        }       
+
+
+        //Funcion para validar la insercion de un nuevo proyecto
         private int ValidateTableProjects(string Name, string Adress, string Code, string OfficeTelephone, string Logo)
         {
             var queryParameters = new List<SqlParameter>
@@ -114,14 +185,11 @@ namespace CondominiumProject.Controllers
 
             var resultado = DatabaseHelper.ExecuteQuery("VerifyAndInsertProjectData", queryParameters);
 
-            // Verifica si hay filas en el resultado
             if (resultado.Rows.Count > 0)
             {
-                // Obtiene el valor de Result de la primera fila
                 return Convert.ToInt32(resultado.Rows[0]["Result"]);
             }
 
-            // Resultado desconocido o error
             return -2;
         }
 

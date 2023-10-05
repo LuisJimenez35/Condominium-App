@@ -126,66 +126,59 @@
 
     <br>
 
-    <div class="container2 bg-light">
-        <form asp-controller="Root" asp-action="EditProject">
-            <h3>Editar Proyecto</h3>
-            <h4>@ViewBag.ProjectCode</h4>
-            <div class="row p-1">
-                <div class="col">
-                    <input type="text" name="Code" value="@ViewBag.ProjectCode" readonly hidden />
-                </div>
-                <div class="col">
-                    <input name="Name" type="text" class="form-control" placeholder="@ViewBag.ProjectName" aria-label="Nombre Proyecto" required>
-                </div>
-                <div class="col">
-                    <input name="Adress" type="text" class="form-control" placeholder="@ViewBag.ProjectAdress" aria-label="Direccion" required>
-                </div>
-                <div class="col">
-                    <input name="OfficeTelephone" type="text" class="form-control" placeholder="+506 @ViewBag.ProjectTelephone" aria-label="Telefono" required>
-                </div>
+    <div class="text-center">
+        @if (ViewBag.RootHasAccessToProjects)
+        {
+            <div class="row">
 
-                <div class="input-group mb-3">
-                    <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
-                    <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
-                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#ID</th>
+                            <th scope="col">UserName</th>
+                            <th scope="col">Password</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @foreach (var root_user in ViewBag.RootUsersList)
+                    {
+                        <tbody>
+                            <tr>
+                                <th scope="row">@root_user.ID</th>
+                                <td>@root_user.UserName</td>
+                                <td>@root_user.Password</td>
+                                <td><button type="button" class="btn btn-warning">Editar</button></td>
+                                <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar</button></td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
 
-                <div class="col">
-                    <div class="container overflow-hidden text-center">
-                        <div class="row gx-5">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary">Editar</button>
-                            </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar Proyecto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </form> 
+        }
     </div>
 
-
+    <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form asp-controller="Root" asp-action="DeleteProject">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Proyecto </h1>
-                    </div>
-                    <div class="modal-body">
-                        Estas seguro que deseas eliminar el proyecto @ViewBag.ProjectCode?
-                        <br>
-                        <input type="text" name="Code" value="@ViewBag.ProjectCode" readonly hidden />
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </div>
-                </form>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Administrador</h1>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
             </div>
         </div>
     </div>
+
+
+
 
     <div class="space-container">
     </div>

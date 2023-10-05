@@ -42,6 +42,31 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
+        public IActionResult RootUsersIndex()
+        {
+            ViewBag.RootHasAccessToProjects = true;
+
+            if (!ViewBag.RootHasAccessToProjects)
+            {
+                ViewBag.Error = new ErrorHandler()
+                {
+                    Title = "Security validation",
+                    ErrorMessage = "User do not have access to this page",
+                    ActionMessage = "Go to login",
+                    Path = "/Login"
+                };
+
+                return View("ErrorHandler");
+            }
+
+            ViewBag.RootUsersList = GetRootUsers();
+
+            ViewBag.email = Request.Query["email"].ToString();
+
+            return View();
+        }
+
+
         public IActionResult CreateProyectIndex()
         {
             ViewBag.email = Request.Query["email"].ToString();
@@ -82,6 +107,24 @@ namespace CondominiumProject.Controllers
             return projectslist;
 
         }
+
+        public List<RootUsers> GetRootUsers()
+        {
+            List<RootUsers> rootUsersList = new List<RootUsers>();
+            DataTable ds = Database.DatabaseHelper.ExecuteQuery("spGetRootUsers", null);
+
+            foreach (DataRow dr in ds.Rows)
+            {
+                rootUsersList.Add(new RootUsers
+                {
+                    ID = Convert.ToInt32(dr["ID"]),
+                    UserName = dr["UserName"].ToString(),
+                    Password = dr["Password"].ToString()
+                });
+            }
+            return rootUsersList;
+        }
+
 
         // Funcion pincipal para crear un proyecto nuevo
         public ActionResult CreateProject(string Name, string Adress, string Code, string OfficeTelephone, string Logo)
@@ -147,7 +190,7 @@ namespace CondominiumProject.Controllers
                 default:
                     return View("Error");
             }
-        }       
+        }
 
         // Funcion para eliminar un proyecto
         public ActionResult DeleteProject(string Code)
@@ -219,7 +262,7 @@ namespace CondominiumProject.Controllers
                 return Convert.ToInt32(resultado.Rows[0]["Result"]);
             }
             return -2;
-        }       
+        }
 
         //Funcion para validar la insercion de un nuevo proyecto
         private int ValidateTableProjects(string Name, string Adress, string Code, string OfficeTelephone, string Logo)

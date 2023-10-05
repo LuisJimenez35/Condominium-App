@@ -9,6 +9,6 @@
     "\\CondominiumProject\\CondominiumProject\\Views\\Home",
     "\\CondominiumProject\\CondominiumProject\\Views\\Login"
   ],
-  "SelectedNode": "\\CondominiumProject\\CondominiumProject\\Program.cs",
+  "SelectedNode": "\\CondominiumProject\\CondominiumProject\\Controllers\\RootController.cs",
   "PreviewInSolutionExplorer": false
 }

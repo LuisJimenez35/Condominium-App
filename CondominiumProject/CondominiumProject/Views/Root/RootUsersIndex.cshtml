@@ -134,24 +134,70 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#ID</th>
                             <th scope="col">UserName</th>
                             <th scope="col">Password</th>
                             <th></th>
-                            <th></th>
+                            <th><button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Administrador</button></th>
                         </tr>
                     </thead>
                     @foreach (var root_user in ViewBag.RootUsersList)
                     {
                         <tbody>
                             <tr>
-                                <th scope="row">@root_user.ID</th>
                                 <td>@root_user.UserName</td>
                                 <td>@root_user.Password</td>
-                                <td><button type="button" class="btn btn-warning">Editar</button></td>
-                                <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar</button></td>
+                                <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal1_@root_user.ID" data-id="@root_user.ID" data-username="@root_user.UserName" data-password="@root_user.Password">Editar</button></td>
+                                <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@root_user.ID" data-id="@root_user.ID" data-username="@root_user.UserName">Eliminar</button></td>
                             </tr>
                         </tbody>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal1_@root_user.ID" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Administrador</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="@root_user.UserName" aria-label="Usuario" />
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="@root_user.Password" aria-label="Password" />
+                                            </div>
+                                            <input type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary">Editar Administrador</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Modal Eliminar -->
+                        <div class="modal fade" id="staticBackdrop_@root_user.ID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Administrador</h1>
+                                    </div>
+                                    <form asp-controller="RootAdmins" asp-action="DeleteProject">
+                                        <div class="modal-body">
+                                            <p>¿Estas seguro que deseas eliminar el administrador @root_user.UserName?</p>
+                                            <input name="ID" type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     }
                 </table>
 
@@ -159,23 +205,39 @@
         }
     </div>
 
+
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Administrador</h1>
-                </div>
-                <div class="modal-body">
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
+                <form asp-controller="RootAdmins" asp-action="CreateRootUser">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Administrador</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="UserName" class="form-control" placeholder="Usuario" aria-label="Usuario">
+                            </div>
+                            <div class="col">
+                                <input type="text" name="Password" class="form-control" placeholder="Password" aria-label="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Crear Administrador</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+
+
+
+
+
 
 
 

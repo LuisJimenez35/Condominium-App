@@ -2,12 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\CondominiumProject",
-    "\\CondominiumProject\\CondominiumProject",
-    "\\CondominiumProject\\CondominiumProject\\Controllers",
-    "\\CondominiumProject\\CondominiumProject\\Views",
-    "\\CondominiumProject\\CondominiumProject\\Views\\Guard",
-    "\\CondominiumProject\\CondominiumProject\\Views\\Home",
-    "\\CondominiumProject\\CondominiumProject\\Views\\Login"
+    "\\CondominiumProject\\CondominiumProject"
   ],
   "SelectedNode": "\\CondominiumProject\\CondominiumProject.sln",
   "PreviewInSolutionExplorer": false

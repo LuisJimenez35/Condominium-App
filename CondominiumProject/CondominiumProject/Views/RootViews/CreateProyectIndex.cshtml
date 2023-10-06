@@ -8,7 +8,7 @@
         <nav>
             <ul class="nav nav-tabs justify-content-center bg-light ">
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">
+                    <a class="nav-link " aria-current="page" href="@Url.Action("RootIndex","RootViews")">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link " href="@Url.Action("RootUsersIndex","RootViews")">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" />
                         </svg> Administradores
@@ -124,123 +124,43 @@
         </ul>
     </div>
 
+
     <br>
 
-    <div class="text-center">
-        @if (ViewBag.RootHasAccessToProjects)
-        {
-            <div class="row">
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">UserName</th>
-                            <th scope="col">Password</th>
-                            <th></th>
-                            <th><button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Administrador</button></th>
-                        </tr>
-                    </thead>
-                    @foreach (var root_user in ViewBag.RootUsersList)
-                    {
-                        <tbody>
-                            <tr>
-                                <td>@root_user.UserName</td>
-                                <td>@root_user.Password</td>
-                                <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal1_@root_user.ID" data-id="@root_user.ID" data-username="@root_user.UserName" data-password="@root_user.Password">Editar</button></td>
-                                <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@root_user.ID" data-id="@root_user.ID" data-username="@root_user.UserName">Eliminar</button></td>
-                            </tr>
-                        </tbody>
+    <div class="container2 bg-light">
+        <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M.5 3.5A.5.5 0 0 1 1 .5h14a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H1a.5.5 0 0 1-.5-.5Zm1 .5v10h13v-10H1Zm1.5 1 5 2 5-2v9H3v-9Z" />
+            </svg> Crear Proyecto Nuevo
+        </h3>
+        <form asp-controller="Proyects" asp-action="CreateProject">
+            <div class="row p-1">
+                <div class="col">
+                    <input name="Name" type="text" class="form-control" placeholder="Nombre Proyecto" aria-label="Nombre Proyecto" required>
+                </div>
+                <div class="col">
+                    <input name="Adress" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" required>
+                </div>
+                <div class="col">
+                    <input name="Code" type="text" class="form-control" placeholder="Codigo" aria-label="Codigo" required>
+                </div>
+                <div class="col">
+                    <input name="OfficeTelephone" type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" required>
+                </div>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal1_@root_user.ID" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Administrador</h1>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="text" class="form-control" placeholder="@root_user.UserName" aria-label="Usuario" />
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" class="form-control" placeholder="@root_user.Password" aria-label="Password" />
-                                            </div>
-                                            <input type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary">Editar Administrador</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Modal Eliminar -->
-                        <div class="modal fade" id="staticBackdrop_@root_user.ID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Administrador</h1>
-                                    </div>
-                                    <form asp-controller="RootAdmins" asp-action="DeleteProject">
-                                        <div class="modal-body">
-                                            <p>¿Estas seguro que deseas eliminar el administrador @root_user.UserName?</p>
-                                            <input name="ID" type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </table>
-
+                <div class="input-group mb-3">
+                    <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
+                    <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-success">Crear Proyecto</button>
+                </div>
             </div>
-        }
+        </form>
     </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form asp-controller="RootAdmins" asp-action="CreateRootUser">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Administrador</h1>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <input type="text" name="UserName" class="form-control" placeholder="Usuario" aria-label="Usuario">
-                            </div>
-                            <div class="col">
-                                <input type="text" name="Password" class="form-control" placeholder="Password" aria-label="Password">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Crear Administrador</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
 
     <div class="space-container">
     </div>

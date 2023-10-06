@@ -9,12 +9,13 @@ namespace CondominiumProject.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: LoginContriller
+        // Vista de la ventana de login form
         public ActionResult Index()
         {
             return View();
         }
 
+        //Funcion que valida el login y redirige a la vista correspondiente
         public ActionResult Login(string email, string password)
         {
             int validationResult = ValidateCredentialsRoot(email, password);
@@ -22,7 +23,7 @@ namespace CondominiumProject.Controllers
             switch (validationResult)
             {
                 case 1:
-                    return RedirectToAction("RootIndex", "Root" , new {email});
+                    return RedirectToAction("RootIndex", "RootViews" , new {email});
                     
 
                 case 0:
@@ -59,13 +60,14 @@ namespace CondominiumProject.Controllers
             }
         }
 
+        //Funcion que redirige a la vista de login
         public ActionResult Logout()
         {
             return RedirectToAction("Index", "Login");
             
         }   
 
-
+        //Funcion que valida el login de root
         private int ValidateCredentialsRoot(string email, string password)
         {
             var queryParameters = new List<SqlParameter>
@@ -85,6 +87,7 @@ namespace CondominiumProject.Controllers
             return -2;
         }
 
+        //Funcion que valida el login de usuario
         private int ValidateCredentialsUser(string email, string password)
         {
             var queryParameters = new List<SqlParameter>
@@ -104,6 +107,7 @@ namespace CondominiumProject.Controllers
             return -2;
         }
 
+        //Funcion que valida el login de guardia
         private int ValidateCredentialsGuard(string email, string password)
         {
             var queryParameters = new List<SqlParameter>
@@ -121,76 +125,6 @@ namespace CondominiumProject.Controllers
 
             // Resultado desconocido o error
             return -2;
-        }
-
-
-        // GET: LoginContriller/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: LoginContriller/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: LoginContriller/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: LoginContriller/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: LoginContriller/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: LoginContriller/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: LoginContriller/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        }   
     }
 }

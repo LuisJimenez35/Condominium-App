@@ -2,18 +2,14 @@
 using CondominiumProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace CondominiumProject.Controllers
 {
-    public class RootAdminsController : Controller
+    public class RootUsersController : Controller
     {
-        // GET: RootAdminsController
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        // Funcion para crear un nuevo usuario root
         public ActionResult CreateRootUser(string UserName, string Password)
         {
             int validationResult = ValidateAndInsertRoots(UserName, Password);
@@ -30,7 +26,7 @@ namespace CondominiumProject.Controllers
                     };
                     return View("ErrorHandler");
                 case 2:
-                    return RedirectToAction("RootUsersIndex", "Root");
+                    return RedirectToAction("RootUsersIndex", "RootViews");
                 case 0:
                     ViewBag.Error = new ErrorHandler()
                     {
@@ -46,7 +42,41 @@ namespace CondominiumProject.Controllers
             }
         }
 
-        public ActionResult DeleteProject(string ID)
+        // Funcion para editar un usuario root
+        public ActionResult EditUserRoot(string ID, string UserName, string Password)
+        {
+            int validationres = ValidateUpdateRoot(ID,UserName,Password);
+
+            switch (validationres)
+            {
+                case 1:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Incorrect Data",
+                        ErrorMessage = "Datos duplicados",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+                case 2:
+                    return RedirectToAction("RootUsersIndex", "RootViews");
+                case 0:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Nada",
+                        ErrorMessage = "Nada",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+
+                default:
+                    return View("Error");
+            }
+        }
+
+        //Funcion para eliminar un usuario root
+        public ActionResult DeleteUserRoot(string ID)
         {
             int validationres = ValidateDeleteRoot(ID);
 
@@ -62,7 +92,7 @@ namespace CondominiumProject.Controllers
                     };
                     return View("ErrorHandler");
                 case 2:
-                    return RedirectToAction("RootUsersIndex", "Root");
+                    return RedirectToAction("RootUsersIndex", "RootViews");
                 case 0:
                     ViewBag.Error = new ErrorHandler()
                     {
@@ -78,7 +108,7 @@ namespace CondominiumProject.Controllers
             }
         }
 
-
+        //Funcion para validar la creacion de un nuevo usuario root
         private int ValidateAndInsertRoots(string UserName, string Password)
         {
             var queryParameters = new List<SqlParameter>
@@ -97,6 +127,25 @@ namespace CondominiumProject.Controllers
             return -2;
         }
 
+        //Funcion para validar la edicion de un usuario root
+        private int ValidateUpdateRoot(string ID, string UserName, string Password)
+        {
+            var queryParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@ID", ID),
+                new SqlParameter("@UserName", UserName),
+                new SqlParameter("@Password", Password)
+            };
+
+            var resultado = DatabaseHelper.ExecuteQuery("VerifyAndUpdateRoot", queryParameters);
+
+            if (resultado.Rows.Count > 0)
+            {
+                return Convert.ToInt32(resultado.Rows[0]["Result"]);
+            }
+            return -2;
+        }
+
         //Funcion para validar la eliminacion de un proyecto
         private int ValidateDeleteRoot(string ID)
         {
@@ -112,75 +161,6 @@ namespace CondominiumProject.Controllers
                 return Convert.ToInt32(resultado.Rows[0]["Result"]);
             }
             return -2;
-        }
-
-        // GET: RootAdminsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: RootAdminsController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: RootAdminsController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RootAdminsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: RootAdminsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RootAdminsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RootAdminsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

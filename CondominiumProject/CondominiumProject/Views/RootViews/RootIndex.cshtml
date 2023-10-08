@@ -149,15 +149,70 @@
                                     </div>
                                     <br>
                                     <br>
-                                    <form asp-controller="RootViews" asp-action="EditProyectIndex" method="get">
-                                        <div class="col">
-                                            <button type="submit" class="btn btn-warning" name="projectCode" value="@habitational_project.Code">Editar este Proyecto</button>
-                                            <input type="hidden" name="projectName" value="@habitational_project.Name" />
-                                            <input type="hidden" name="projectAdress" value="@habitational_project.Adress" />
-                                            <input type="hidden" name="projectOfficeTelephone" value="@habitational_project.OfficeTelephone" />
-                                        </div>
-                                    </form>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Editar Proyecto</button>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Editar Proyecto-->
+                    <div class="modal fade" id="exampleModal2_@habitational_project.Code" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Proyecto</h1>
+                                </div>
+                                <form asp-controller="Proyects" asp-action="EditProject">
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input name="Name" type="text" class="form-control" placeholder="@habitational_project.Name" aria-label="Nombre" required>
+                                            </div>
+                                            <div class="col">
+                                                <input name="Adress" type="text" class="form-control" placeholder="@habitational_project.Adress" aria-label="Direccion" required>
+                                            </div>
+                                            <div class="col">
+                                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="@habitational_project.OfficeTelephone" aria-label="Telefono" required>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
+                                                <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
+                                            </div>
+                                            <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code"/>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Editar</button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Eliminar </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    @* Modal Eliminar proyecto *@
+                    <div class="modal fade" id="staticBackdrop_@habitational_project.Code" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Proyecto</h1>
+                                </div>
+                                <form asp-controller="Proyects" asp-action="DeleteProject">
+                                    <div class="modal-body">
+                                        <p>¿Estas seguro que deseas eliminar el Proyecto <h2 class="font-bold">@habitational_project.Name</h2></p>
+                                        <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -168,10 +223,46 @@
 
     <footer class="bg-light">
         <br>
-        <form asp-controller="RootViews" asp-action="CreateProyectIndex">
-            <button type="submit" class="btn btn-secondary">Crear Proyecto</button>
-        </form>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Proyecto</button>
     </footer>
+
+    <!-- Modal Create Proyect-->
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-controller="Proyects" asp-action="CreateProject">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Proyecto</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <input name="Name" type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" required>
+                            </div>
+                            <div class="col">
+                                <input name="Adress" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" required>
+                            </div>
+                            <div class="col">
+                                <input name="Code" type="text" class="form-control" placeholder="Codigo" aria-label="Codigo" required>
+                            </div>
+                            <div class="col">
+                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
+                                <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Crear Proyecto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
     <div class="space-container">
@@ -181,7 +272,7 @@
         <footer class="py-0 my-2">
             <ul class="nav justify-content-center border-bottom ">
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2">
+                    <a href="@Url.Action("RootIndex","RootViews")" class="nav-link px-2">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
@@ -207,7 +298,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 ">
+                    <a href="@Url.Action("RootUsersIndex","RootViews")" class="nav-link px-2 ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" />
                         </svg><br> Administradores

@@ -49,13 +49,6 @@ namespace CondominiumProject.Controllers
         }
 
 
-        public IActionResult CreateProyectIndex()
-        {
-            ViewBag.email = Request.Query["email"].ToString();
-
-            return View();
-        }
-
         public IActionResult EditProyectIndex()
         {
             ViewBag.email = Request.Query["email"].ToString();

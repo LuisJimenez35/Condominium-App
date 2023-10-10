@@ -42,7 +42,7 @@ namespace CondominiumProject.Controllers
         }
 
         // Funcion para editar un proyecto
-        public ActionResult EditProject(string Name, string Adress, string Code, string OfficeTelephone, string Logo)
+        public ActionResult EditProject(string Name, string Adress, string Code, string OfficeTelephone, string Logo ,string email)
         {
             int validationres = ValidateUpdateProjects(Name, Adress, Code, OfficeTelephone, Logo);
 
@@ -75,7 +75,7 @@ namespace CondominiumProject.Controllers
         }
 
         // Funcion para eliminar un proyecto
-        public ActionResult DeleteProject(string Code)
+        public ActionResult DeleteProject(string Code , string email)
         {
             int validationres = ValidateDeleteProjects(Code);
 

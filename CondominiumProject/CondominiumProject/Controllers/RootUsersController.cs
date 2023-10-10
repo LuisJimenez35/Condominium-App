@@ -10,7 +10,7 @@ namespace CondominiumProject.Controllers
     public class RootUsersController : Controller
     {
         // Funcion para crear un nuevo usuario root
-        public ActionResult CreateRootUser(string UserName, string Password)
+        public ActionResult CreateRootUser(string UserName, string Password , string email)
         {
             int validationResult = ValidateAndInsertRoots(UserName, Password);
 
@@ -26,7 +26,7 @@ namespace CondominiumProject.Controllers
                     };
                     return View("ErrorHandler");
                 case 2:
-                    return RedirectToAction("RootUsersIndex", "RootViews");
+                    return RedirectToAction("RootUsersIndex", "RootViews", new {email});
                 case 0:
                     ViewBag.Error = new ErrorHandler()
                     {
@@ -43,7 +43,7 @@ namespace CondominiumProject.Controllers
         }
 
         // Funcion para editar un usuario root
-        public ActionResult EditUserRoot(string ID, string UserName, string Password)
+        public ActionResult EditUserRoot(string ID, string UserName, string Password , string email)
         {
             int validationres = ValidateUpdateRoot(ID,UserName,Password);
 
@@ -59,7 +59,7 @@ namespace CondominiumProject.Controllers
                     };
                     return View("ErrorHandler");
                 case 2:
-                    return RedirectToAction("RootUsersIndex", "RootViews");
+                    return RedirectToAction("RootUsersIndex", "RootViews", new { email });
                 case 0:
                     ViewBag.Error = new ErrorHandler()
                     {
@@ -76,7 +76,7 @@ namespace CondominiumProject.Controllers
         }
 
         //Funcion para eliminar un usuario root
-        public ActionResult DeleteUserRoot(string ID)
+        public ActionResult DeleteUserRoot(string ID, string email)
         {
             int validationres = ValidateDeleteRoot(ID);
 
@@ -92,7 +92,7 @@ namespace CondominiumProject.Controllers
                     };
                     return View("ErrorHandler");
                 case 2:
-                    return RedirectToAction("RootUsersIndex", "RootViews");
+                    return RedirectToAction("RootUsersIndex", "RootViews", new { email });
                 case 0:
                     ViewBag.Error = new ErrorHandler()
                     {

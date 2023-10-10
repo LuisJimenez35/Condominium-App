@@ -1,4 +1,4 @@
-# 🌆CondominiumApp
+# 🌆Condominium-App
 
 ## ⚠️Situation:
 According to data from elmundo.cr, condominiums in Costa Rica have increased almost 600% since 1990.

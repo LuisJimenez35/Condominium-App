@@ -1,9 +1,21 @@
 ﻿<head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/PrincipalRoot.css" asp-append-version="true" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
     <header>
         <nav>
             <ul class="nav nav-tabs justify-content-center bg-light ">
@@ -26,7 +38,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="@Url.Action("GuardsIndex","RootViews", new {email = ViewBag.email})">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" class="bi bi-shield-fill-check" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -127,6 +139,7 @@
     <br>
 
     <div class="text-center">
+
         @if (ViewBag.RootHasAccessToProjects)
         {
             <div class="row">
@@ -136,73 +149,77 @@
                         <tr>
                             <th scope="col">UserName</th>
                             <th scope="col">Password</th>
-                            <th></th>
                             <th><button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Administrador</button></th>
+                            <th>
+                                <input type="text" class="form-control" id="myInput" placeholder="Search..." aria-label="Search..">
+                            </th>
                         </tr>
                     </thead>
-                    @foreach (var root_user in ViewBag.RootUsersList)
-                    {
-                        <tbody>
+                    <tbody id="myTable">
+                        @foreach (var root_user in ViewBag.RootUsersList)
+                        {
+
                             <tr>
                                 <td>@root_user.UserName</td>
                                 <td>@root_user.Password</td>
                                 <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal1_@root_user.ID" data-id="@root_user.ID" data-username="@root_user.UserName" data-password="@root_user.Password">Editar</button></td>
                                 <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@root_user.ID" data-id="@root_user.ID" data-username="@root_user.UserName">Eliminar</button></td>
                             </tr>
-                        </tbody>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal1_@root_user.ID" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Administrador</h1>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal1_@root_user.ID" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Administrador</h1>
+                                        </div>
+                                        <form asp-controller="RootUsers" asp-action="EditUserRoot">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input name="UserName" type="text" class="form-control" placeholder="@root_user.UserName" aria-label="Usuario" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <input name="Password" type="text" class="form-control" placeholder="@root_user.Password" aria-label="Password" />
+                                                    </div>
+                                                    <input name="ID" type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
+                                                    <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-primary">Editar Administrador</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <form asp-controller="RootUsers" asp-action="EditUserRoot">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <input name="UserName" type="text"  class="form-control" placeholder="@root_user.UserName" aria-label="Usuario" />
-                                                </div>
-                                                <div class="col">
-                                                    <input name="Password" type="text" class="form-control" placeholder="@root_user.Password" aria-label="Password" />
-                                                </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Modal Eliminar -->
+                            <div class="modal fade" id="staticBackdrop_@root_user.ID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Administrador</h1>
+                                        </div>
+                                        <form asp-controller="RootUsers" asp-action="DeleteUserRoot">
+                                            <div class="modal-body">
+                                                <p>¿Estas seguro que deseas eliminar el administrador @root_user.UserName?</p>
                                                 <input name="ID" type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
                                                 <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Editar Administrador</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Modal Eliminar -->
-                        <div class="modal fade" id="staticBackdrop_@root_user.ID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Administrador</h1>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <form asp-controller="RootUsers" asp-action="DeleteUserRoot">
-                                        <div class="modal-body">
-                                            <p>¿Estas seguro que deseas eliminar el administrador @root_user.UserName?</p>
-                                            <input name="ID" type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
-                                            <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
-                        </div>
-                    }
+                        }
+                    </tbody>
                 </table>
 
             </div>

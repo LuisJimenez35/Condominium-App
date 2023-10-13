@@ -56,6 +56,13 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
+        public IActionResult UsersIndex()
+        {
+            ViewBag.RootHasAccessToProjects = true;
+            ViewBag.UsersList = GetUsers();
+            ViewBag.email = Request.Query["email"].ToString();
+            return View();
+        }
 
         //Funcion para obtener los proyectos habitacionales
         public List<HabitationalProjects> GetHabitationalProject()
@@ -112,7 +119,28 @@ namespace CondominiumProject.Controllers
             }
             return guardsList;
         }
-       
-        
+
+        public List<Users> GetUsers()
+        {
+            List<Users> usersList = new List<Users>();
+            DataTable ds = Database.DatabaseHelper.ExecuteQuery("spGetUsers", null);
+
+            foreach (DataRow dr in ds.Rows)
+            {
+                usersList.Add(new Users
+                {
+                    IdUser = Convert.ToInt32(dr["IdUser"]),
+                    DNI = dr["DNI"].ToString(),
+                    FirsName = dr["FirsName"].ToString(),
+                    LastName = dr["LastName"].ToString(),
+                    Telephone1 = dr["Telephone1"].ToString(),
+                    Telephone2 = dr["Telephone2"].ToString(),
+                    Email = dr["Email"].ToString(),
+                    Picture = dr["Picture"].ToString(),
+                    Password = dr["Password"].ToString()
+                });
+            }
+            return usersList;
+        }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System;
+using System.ComponentModel.Design;
 
 namespace CondominiumProject.Controllers
 {
@@ -82,6 +83,7 @@ namespace CondominiumProject.Controllers
             {
                 return Convert.ToInt32(resultado.Rows[0]["Result"]);
             }
+
 
             // Resultado desconocido o error
             return -2;

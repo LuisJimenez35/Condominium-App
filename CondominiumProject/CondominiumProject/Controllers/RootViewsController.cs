@@ -48,18 +48,14 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
-
-        public IActionResult EditProyectIndex()
+        public IActionResult GuardsIndex()
         {
+            ViewBag.RootHasAccessToProjects = true;
+            ViewBag.GuardsList = GetGuards();
             ViewBag.email = Request.Query["email"].ToString();
-
-            ViewBag.ProjectCode = Request.Query["projectCode"].ToString();
-            ViewBag.ProjectName = Request.Query["projectName"].ToString();
-            ViewBag.ProjectAdress = Request.Query["projectAdress"].ToString();
-            ViewBag.ProjectTelephone = Request.Query["projectOfficeTelephone"].ToString();
-
             return View();
         }
+
 
         //Funcion para obtener los proyectos habitacionales
         public List<HabitationalProjects> GetHabitationalProject()
@@ -99,5 +95,24 @@ namespace CondominiumProject.Controllers
             }
             return rootUsersList;
         }
+
+        public List<Guards> GetGuards()
+        {
+            List<Guards> guardsList = new List<Guards>();
+            DataTable ds = Database.DatabaseHelper.ExecuteQuery("spGetGuards", null);
+
+            foreach (DataRow dr in ds.Rows)
+            {
+                guardsList.Add(new Guards
+                {
+                    IDGuard = Convert.ToInt32(dr["IDGuard"]),
+                    UserName = dr["UserName"].ToString(),
+                    Password = dr["Password"].ToString()
+                });
+            }
+            return guardsList;
+        }
+       
+        
     }
 }

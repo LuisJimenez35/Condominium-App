@@ -1,9 +1,41 @@
 ﻿<head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/PrincipalRoot.css" asp-append-version="true" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
+    <script>
+        $(document).ready(function () {
+            // Agrega un listener al evento input del input con id "searchInput"
+            $('#searchInput').on('input', function () {
+                searchProjects();
+            });
+
+            function searchProjects() {
+                var searchTerm = $('#searchInput').val().toLowerCase();
+
+                $('.card').each(function () {
+                    var $card = $(this);
+                    var projectName = $card.find('.card-title').text().toLowerCase();
+                    var projectTextTitle = $card.find('.tile_card').text().toLowerCase();
+                    var prjectcode = $card.find('.code').text().toLowerCase();
+                    var projectText = $card.find('.card-text').text().toLowerCase();
+                    var projectdirection = $card.find('.direction').text().toLowerCase();
+
+                    // Muestra u oculta el proyecto en función de si coincide con la búsqueda
+                    if (projectName.includes(searchTerm) || projectTextTitle.includes(searchTerm) || projectText.includes(searchTerm)) {
+                        $card.show();
+                    } else {
+                        $card.hide();
+                    }
+                });
+            }
+        });
+    </script>
+
+
+
     <header>
         <nav>
             <ul class="nav nav-tabs justify-content-center bg-light ">
@@ -128,6 +160,11 @@
     <br>
 
     <div class="text-center">
+        <div class="mb-1 bg-light">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar Proyecto"/>
+            <div id="emailHelp" class="form-text">Puedes colocar cualquier dato para buscar el proyecto</div>
+        </div>
+
         @if (ViewBag.RootHasAccessToProjects)
         {
             <div class="row">
@@ -137,8 +174,8 @@
                         <img src="../@habitational_project.Logo" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">@habitational_project.Name</h5>
-                            <p class="card-text-title"><p class="tile_card">Codigo Proyecto</p><p>@habitational_project.Code</p>
-                            <p class="card-text"><p class="tile_card">Direccion</p><p> @habitational_project.Adress</p>
+                            <p class="card-text-title"><p class="tile_card">Codigo Proyecto <br><br>@habitational_project.Code</p>
+                            <p class="card-text"><p class="tile_card">Direccion <br><br>@habitational_project.Adress</p>
                             <p class="card-text">+506 @habitational_project.OfficeTelephone</p>
                         </div>
                         <div class="container overflow-hidden text-center">
@@ -180,7 +217,7 @@
                                                 <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
                                                 <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
                                             </div>
-                                            <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code"/>
+                                            <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code" />
                                         </div>
                                     </div>
                                     <div class="modal-footer">

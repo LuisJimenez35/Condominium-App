@@ -60,6 +60,14 @@ namespace CondominiumProject.Controllers
         {
             ViewBag.RootHasAccessToProjects = true;
             ViewBag.UsersList = GetUsers();
+            ViewBag.ProjectLists = GetHabitationalProject();
+            ViewBag.email = Request.Query["email"].ToString();
+            return View();
+        }
+
+        public IActionResult ProjectIndex()
+        {
+            ViewBag.RootHasAccessToProjects = true;
             ViewBag.email = Request.Query["email"].ToString();
             return View();
         }

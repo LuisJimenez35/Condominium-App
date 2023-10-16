@@ -157,146 +157,111 @@
     </div>
     <br>
 
-    <div class="text-center">
-        <div class="mb-1 bg-light">
-            <input type="text" id="searchInput" class="form-control" placeholder="Buscar Proyecto"/>
-            <div id="emailHelp" class="form-text">Puedes colocar cualquier dato para buscar el proyecto</div>
-        </div>
 
-        @if (ViewBag.RootHasAccessToProjects)
-        {
-            <div class="row">
-                @foreach (var habitational_project in ViewBag.ProjectLists)
-                {
-                    <div class="card m-2" style="width: 16rem;">
-                        <img src="../@habitational_project.Logo" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">@habitational_project.Name</h5>
-                            <p class="card-text-title"><p class="tile_card">Codigo Proyecto <br><br>@habitational_project.Code</p>
-                            <p class="card-text"><p class="tile_card">Direccion <br><br>@habitational_project.Adress</p>
-                            <p class="card-text">+506 @habitational_project.OfficeTelephone</p>
-                        </div>
-                        <div class="container overflow-hidden text-center">
-                            <div class="card-footer">
-                                <div class="row gx-5">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-outline-primary">Acceder a Proyecto</button>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="col">
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Editar Proyecto</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
-
-                    <!-- Modal Editar Proyecto-->
-                    <div class="modal fade" id="exampleModal2_@habitational_project.Code" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Proyecto</h1>
-                                </div>
-                                <form asp-controller="Proyects" asp-action="EditProject">
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <input name="Name" type="text" class="form-control" placeholder="@habitational_project.Name" aria-label="Nombre" required>
-                                            </div>
-                                            <div class="col">
-                                                <input name="Adress" type="text" class="form-control" placeholder="@habitational_project.Adress" aria-label="Direccion" required>
-                                            </div>
-                                            <div class="col">
-                                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="@habitational_project.OfficeTelephone" aria-label="Telefono" required>
-                                            </div>
-                                            <div class="input-group mb-3">
-                                                <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
-                                                <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
-                                            </div>
-                                            <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code" />
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary">Editar</button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Eliminar </button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    @* Modal Eliminar proyecto *@
-                    <div class="modal fade" id="staticBackdrop_@habitational_project.Code" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Proyecto</h1>
-                                </div>
-                                <form asp-controller="Proyects" asp-action="DeleteProject">
-                                    <div class="modal-body">
-                                        <p>¿Estas seguro que deseas eliminar el Proyecto <h2 class="font-bold">@habitational_project.Name</h2></p>
-                                        <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                }
+                </div>
             </div>
-        }
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">House</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Hour</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>16-10-23</td>
+                                    <td>12:34</td>
+                                    <td>Mateo</td>
+                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Visit Data</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer class="bg-light">
-        <br>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Proyecto</button>
-    </footer>
-
-    <!-- Modal Create Proyect-->
-    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form asp-controller="Proyects" asp-action="CreateProject">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Proyecto</h1>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Visit Information</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><h5 class="card-title">Mateo Aguero</h5></li>
+                            <li class="list-group-item"><p class="card-text"><p class="tile_card">Vist DNI<br>119983234</p></li>
+                            <li class="list-group-item"><p class="card-text"><p class="tile_card">House<br># 3</p></li>
+                            <li class="list-group-item">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Marc</th>
+                                            <th scope="col">Plate</th>
+                                            <th scope="col">Model</th>
+                                            <th scope="col">Color</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Mitsubichi</th>
+                                            <td>334212</td>
+                                            <td>Montero Sport</td>
+                                            <td>Azul</td>                                    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li class="list-group-item">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Hour</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>16-10-23</td>
+                                            <td>12:34</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <input name="Name" type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" required>
-                            </div>
-                            <div class="col">
-                                <input name="Adress" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" required>
-                            </div>
-                            <div class="col">
-                                <input name="Code" type="text" class="form-control" placeholder="Codigo" aria-label="Codigo" required>
-                            </div>
-                            <div class="col">
-                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" required>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
-                                <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Crear Proyecto</button>
-                    </div>
-                </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Editar Condomino</button>
+                </div>
             </div>
         </div>
     </div>
+
+
 
 
 

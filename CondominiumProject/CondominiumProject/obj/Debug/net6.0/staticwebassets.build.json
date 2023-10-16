@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xi8UTK0NMwRpmZYZKXeejAK3HW39SgkRCzJno/LBaV4=",
+  "Hash": "LHUapkNjkC4QpZJ/YloDQSxhd/mQ/DcwfSgXjKQdruM=",
   "Source": "CondominiumProject",
   "BasePath": "_content/CondominiumProject",
   "Mode": "Default",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AppImages\\UserImages\\119010622.png"
+    },
+    {
+      "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\UserImages\\R.jpg",
+      "SourceId": "CondominiumProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\",
+      "BasePath": "_content/CondominiumProject",
+      "RelativePath": "AppImages/UserImages/R.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AppImages\\UserImages\\R.jpg"
     },
     {
       "Identity": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\css\\PrincipalRoot.css",

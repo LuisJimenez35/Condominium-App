@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\CondominiumProject",
-    "\\CondominiumProject\\CondominiumProject",
-    "\\CondominiumProject\\CondominiumProject\\Controllers"
+    "\\CondominiumProject\\CondominiumProject"
   ],
-  "SelectedNode": "\\CondominiumProject\\CondominiumProject.sln",
+  "SelectedNode": "\\CondominiumProject\\CondominiumProject\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

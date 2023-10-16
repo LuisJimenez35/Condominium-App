@@ -139,7 +139,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Telefonos</th>
                             <th scope="col">Email</th>
-                            <th><button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Usuario</button></th>
+                            <th><button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Condomino</button></th>
                             <th>
                                 <input type="text" class="form-control" id="myInput" placeholder="Search..." aria-label="Search..">
                             </th>
@@ -155,7 +155,7 @@
                                 <td>@user.Telephone1 @user.Telephone2</td>
                                 <td>@user.Email</td>
                                 <td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal1_@user.IdUser" data-id="@user.IdUser" dara-dni="@user.DNI" data-firsname="@user.FirsName" data-lastname="@user.LastName" data-telephone1="@user.Telephone1" data-telephone2="@user.Telephone2" data-email="@user.Email" data-picture="@user.Picture" data-password="@user.Password">Informacion</button></td>
-                                <td><button type="button" class="btn btn-danger" button />Eliminar</td>
+                                <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@user.IdUser" data-id="@user.IdUser" data-firsname="@user.FirsName" data-lastame="LastName">Eliminar</button></td>
                             </tr>
 
                             <!-- Modal -->
@@ -178,7 +178,7 @@
                                                     <li class="list-group-item"><p class="card-text"><p class="tile_card">Contraseña<br>@user.Password</p></li>
                                                 </ul>
                                                 <div class="card-footer">
-                                                    Proyecto 
+                                                    Proyecto
                                                 </div>
                                             </div>
 
@@ -191,14 +191,89 @@
                                 </div>
                             </div>
 
+                            <!-- Modal Eliminar -->
+                            <div class="modal fade" id="staticBackdrop_@user.IdUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form asp-controller="UsersC" asp-action="DeleteUser">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Condomino</h1>
+                                        </div>
+                                            <div class="modal-body">
+                                            <p>¿Estas seguro que deseas eliminar el condomino <br><h2 class="font-bold">@user.FirsName @user.LastName?</h2> </p>
+                                                <input name="IdUser" type="hidden" id="modalRootId_@user.IdUser" value="@user.IdUser" />
+                                                <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         }
                     </tbody>
                 </table>
-
             </div>
         }
     </div>
+
+    <!-- Modal Crear Usuario-->
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-controller="UsersC" asp-action="CreateUser">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Condomino
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <input name="DNI" type="text" class="form-control" placeholder="DNI" required>
+                        </div>
+                        <div class="col">
+                            <input name="FirsName" type="text" class="form-control" placeholder="First Name" required>
+                        </div>
+                        <div class="col">
+                            <input name="LastName" type="text" class="form-control" placeholder="Last Name" required>
+                        </div>
+                        <input name="email1" type="hidden" class="form-control" value="@ViewBag.email" />
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <input name="Telephone1" type="text" class="form-control" placeholder="Telephone 1" required>
+                        </div>
+                        <div class="col">
+                                <input name="Telephone2" type="text" class="form-control" placeholder="Telephone2">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <input name="Email" type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="col">
+                            <input name="Password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col">                
+                        <input name="Picture" class="form-control" type="file" id="formFile">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Crear Condomino</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <div class="space-container">
     </div>

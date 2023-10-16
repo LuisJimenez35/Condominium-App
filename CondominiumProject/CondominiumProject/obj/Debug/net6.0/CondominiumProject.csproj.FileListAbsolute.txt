@@ -112,3 +112,4 @@ C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProje
 C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProject\CondominiumProject\obj\Debug\net6.0\CondominiumProject.pdb
 C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProject\CondominiumProject\obj\Debug\net6.0\CondominiumProject.genruntimeconfig.cache
 C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProject\CondominiumProject\obj\Debug\net6.0\ref\CondominiumProject.dll
+C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProject\CondominiumProject\bin\Debug\net6.0\Newtonsoft.Json.dll

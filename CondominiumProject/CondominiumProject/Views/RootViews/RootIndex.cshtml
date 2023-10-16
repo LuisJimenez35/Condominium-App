@@ -159,38 +159,44 @@
 
     <div class="text-center">
         <div class="mb-1 bg-light">
-            <input type="text" id="searchInput" class="form-control" placeholder="Buscar Proyecto"/>
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar Proyecto" />
             <div id="emailHelp" class="form-text">Puedes colocar cualquier dato para buscar el proyecto</div>
         </div>
 
         @if (ViewBag.RootHasAccessToProjects)
         {
             <div class="row">
+
                 @foreach (var habitational_project in ViewBag.ProjectLists)
                 {
                     <div class="card m-2" style="width: 16rem;">
-                        <img src="../@habitational_project.Logo" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">@habitational_project.Name</h5>
-                            <p class="card-text-title"><p class="tile_card">Codigo Proyecto <br><br>@habitational_project.Code</p>
-                            <p class="card-text"><p class="tile_card">Direccion <br><br>@habitational_project.Adress</p>
-                            <p class="card-text">+506 @habitational_project.OfficeTelephone</p>
-                        </div>
-                        <div class="container overflow-hidden text-center">
-                            <div class="card-footer">
-                                <div class="row gx-5">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-outline-primary">Acceder a Proyecto</button>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="col">
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Editar Proyecto</button>
+                        <form asp-controller="HabitationProjectC" asp-action="ViewProject">
+                            <img src="../@habitational_project.Logo" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">@habitational_project.Name</h5>
+                                <p class="card-text-title"><p class="tile_card">Codigo Proyecto <br><br>@habitational_project.Code</p>
+                                <p class="card-text"><p class="tile_card">Direccion <br><br>@habitational_project.Adress</p>
+                                <p class="card-text">+506 @habitational_project.OfficeTelephone</p>
+                            </div>
+                            <div class="container overflow-hidden text-center">
+                                <div class="card-footer">
+                                    <div class="row gx-5">
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-outline-primary">Acceder a Proyecto</button>
+                                            <input name="IdProject" type="hidden" class="form-control" value="@habitational_project.IdProject" />
+                                            <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Editar Proyecto</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
+
 
                     <!-- Modal Editar Proyecto-->
                     <div class="modal fade" id="exampleModal2_@habitational_project.Code" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -252,6 +258,7 @@
                         </div>
                     </div>
                 }
+
             </div>
         }
     </div>

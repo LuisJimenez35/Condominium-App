@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace CondominiumProject.Controllers
 {
@@ -65,12 +66,19 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
-        public IActionResult ProjectIndex()
+        public IActionResult ProjectIndex(string email)
         {
-            ViewBag.RootHasAccessToProjects = true;
-            ViewBag.email = Request.Query["email"].ToString();
-            return View();
+            if (TempData.TryGetValue("SelectedProjectData", out object jsonDataObj) && jsonDataObj is string jsonData)
+            {
+                var selectedProjectData = JsonConvert.DeserializeObject<ProjectData>(jsonData);
+                ViewBag.email = Request.Query["email"].ToString();
+                return View(selectedProjectData); 
+            }
+            return View(); 
         }
+
+
+
 
         //Funcion para obtener los proyectos habitacionales
         public List<HabitationalProjects> GetHabitationalProject()

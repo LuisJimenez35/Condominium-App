@@ -4,6 +4,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
+@model CondominiumProject.Models.ProjectData
+
 <body>
     <script>
         $(document).ready(function () {
@@ -163,16 +165,20 @@
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        @if (Model != null)
+                        {
+                            <img src="../@Model.Logo" class="card-img-top" style="width: 18rem;">
+                            <br>
+                            <br>
+                            <h5 class="card-title">@Model.Name</h5>
+                        }
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
+                        <h5 class="card-title">Visits</h5>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -196,6 +202,35 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Users Habitation</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Number House</th>
+                                    <th scope="col">DNI</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>119010622</td>
+                                    <td>Luis Mora</td>
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -220,7 +255,7 @@
                                             <th scope="col">Plate</th>
                                             <th scope="col">Model</th>
                                             <th scope="col">Color</th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -228,7 +263,7 @@
                                             <th scope="row">Mitsubichi</th>
                                             <td>334212</td>
                                             <td>Montero Sport</td>
-                                            <td>Azul</td>                                    
+                                            <td>Azul</td>
                                         </tr>
                                     </tbody>
                                 </table>

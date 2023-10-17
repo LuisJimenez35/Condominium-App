@@ -85,15 +85,10 @@ namespace CondominiumProject.Controllers
                         ViewBag.VisitDetailsList = visitDetailsList;
                     }
                 }
-
                 return View(selectedProjectData);
             }
             return View();
         }
-
-
-
-
 
         //Funcion para obtener los proyectos habitacionales
         public List<HabitationalProjects> GetHabitationalProject()

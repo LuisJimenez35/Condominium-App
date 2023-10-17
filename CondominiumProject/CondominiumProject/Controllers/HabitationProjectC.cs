@@ -82,6 +82,62 @@ namespace CondominiumProject.Controllers
             return RedirectToAction("Error", "RootViews");
         }
 
+        public IActionResult AsignHouse(string IDProyect, string IDHabitation, string email, string IdUser) 
+        {
+            int validationres = ValidateAndAsignHouse(IDProyect, IDHabitation, email, IdUser);
+
+            switch (validationres)
+            {
+                   case 1:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Incorrect Data",
+                        ErrorMessage = "Datos duplicados",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+                case 2:
+                    return View("Error");
+                case 3:
+                    return RedirectToAction("UsersIndex", "RootViews", new { email });
+                case 0:
+                    ViewBag.Error = new ErrorHandler()
+                    {
+                        Title = "Nada",
+                        ErrorMessage = "Nada",
+                        ActionMessage = "Go to login",
+                        Path = "/Login"
+                    };
+                    return View("ErrorHandler");
+                default:
+                    return View("Error");
+            }
+        }
+
+        private int ValidateAndAsignHouse(string IDProyect, string IDHabitation, string email, string IdUser)
+        {
+            var projectId = Convert.ToInt32(IDProyect);
+            var habitationId = Convert.ToInt32(IDHabitation);
+            var userId = Convert.ToInt32(IdUser);
+
+            var queryParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@IDHabitation", habitationId),
+                new SqlParameter("@IDProject", projectId),
+                new SqlParameter("@IDUser", userId)
+            };
+
+            var resultado = DatabaseHelper.ExecuteQuery("VerifyAndAssignHouse", queryParameters);
+
+            if (resultado.Rows.Count > 0)
+            {
+                return Convert.ToInt32(resultado.Rows[0]["Result"]);
+            }
+
+            return -2;
+        }
+
         private List<HabitationDetails> GetHabitationDetailsForProject(string IdProject)
         {
 

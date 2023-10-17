@@ -78,6 +78,12 @@ namespace CondominiumProject.Controllers
                 {
                     var habitationDetailsList = JsonConvert.DeserializeObject<List<HabitationDetails>>(habitationDetailsData);
                     ViewBag.HabitationDetailsList = habitationDetailsList;
+
+                    if (TempData.TryGetValue("VisitDetails", out object visitDetailsDataObj) && visitDetailsDataObj is string visitDetailsData)
+                    {
+                        var visitDetailsList = JsonConvert.DeserializeObject<List<VisitDetail>>(visitDetailsData);
+                        ViewBag.VisitDetailsList = visitDetailsList;
+                    }
                 }
 
                 return View(selectedProjectData);

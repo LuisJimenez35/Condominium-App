@@ -164,18 +164,89 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>16-10-23</td>
-                                    <td>12:34</td>
-                                    <td>Mateo</td>
-                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Visit Data</button></td>
-                                </tr>
+                                @if (ViewBag.VisitDetailsList != null)
+                                {
+                                    foreach (var visit in ViewBag.VisitDetailsList)
+                                    {
+                                        <tr>
+                                            <th scope="row">@visit.IDHabitation</th>
+                                            <td>@visit.VisitDate.ToString("dd-MM-yyyy")</td>
+                                            <td>@visit.VisitTime</td>
+                                            <td>@visit.FirstName @visit.LastName</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal_@visit.IDHabitation">Informacion</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                @foreach (var visit in ViewBag.VisitDetailsList)
+                {
+                    <div class="modal" id="exampleModal_@visit.IDHabitation" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-5" id="exampleModalLabel">Visit Information</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><h5 class="card-title">@visit.FirstName @visit.LastName</h5></li>
+                                            <li class="list-group-item"><p class="card-text"><p class="tile_card">Visit DNI<br>@visit.DNI</p></li>
+                                            <li class="list-group-item"><p class="card-text"><p class="tile_card">House<br># @visit.IDHabitation</p></li>
+                                            <li class="list-group-item">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Marc</th>
+                                                            <th scope="col">Plate</th>
+                                                            <th scope="col">Model</th>
+                                                            <th scope="col">Color</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">@visit.VehicleMarc</th>
+                                                            <td>@visit.VehiclePlate</td>
+                                                            <td>@visit.VehicleModel</td>
+                                                            <td>@visit.VehicleColor</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Hour</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>@visit.VisitDate.ToString("yyyy-MM-dd")</td>
+                                                            <td>@visit.VisitTime</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
             </div>
+
 
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="card">
@@ -213,67 +284,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal1" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Visit Information</h1>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><h5 class="card-title">Mateo Aguero</h5></li>
-                            <li class="list-group-item"><p class="card-text"><p class="tile_card">Vist DNI<br>119983234</p></li>
-                            <li class="list-group-item"><p class="card-text"><p class="tile_card">House<br># 3</p></li>
-                            <li class="list-group-item">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Marc</th>
-                                            <th scope="col">Plate</th>
-                                            <th scope="col">Model</th>
-                                            <th scope="col">Color</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">Mitsubichi</th>
-                                            <td>334212</td>
-                                            <td>Montero Sport</td>
-                                            <td>Azul</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li class="list-group-item">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Hour</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>16-10-23</td>
-                                            <td>12:34</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Editar Condomino</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 
 

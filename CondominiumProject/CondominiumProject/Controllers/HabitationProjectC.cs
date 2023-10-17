@@ -60,7 +60,18 @@ namespace CondominiumProject.Controllers
                     {
                         Console.WriteLine($"Number of habitation details: {habitationDetailsList.Count}");
                         TempData["HabitationDetails"] = JsonConvert.SerializeObject(habitationDetailsList);
-                        return RedirectToAction("ProjectIndex", "RootViews", new { email });
+
+                        List<VisitDetail> visitDetailsList = GetVisitDetails(IdProject);
+                        if (visitDetailsList != null)
+                        {
+                            Console.WriteLine($"Number of visit details: {visitDetailsList.Count}");
+                            TempData["VisitDetails"] = JsonConvert.SerializeObject(visitDetailsList);
+                            return RedirectToAction("ProjectIndex", "RootViews", new { email });
+                        }
+                        else
+                        {
+                            Console.WriteLine("VisitDetailsList is null.");
+                        }                          
                     }
                     else
                     {
@@ -87,6 +98,20 @@ namespace CondominiumProject.Controllers
             return habitationDetailsList;
         }
 
+        private List<VisitDetail> GetVisitDetails(string IdProject)
+        {
+            var projectId = Convert.ToInt32(IdProject);
+
+            var queryParameters = new List<SqlParameter>
+            {
+                 new SqlParameter("@ProjectId", projectId)
+            };
+
+            // Asegúrate de que ExecuteQuery devuelve List<VisitDetail>
+            var visitDetailsList = DatabaseHelper.ExecuteQuery<VisitDetail>("GetVisitsByProjectID", queryParameters);
+
+            return visitDetailsList;
+        }
 
 
 

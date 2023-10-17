@@ -1,11 +1,12 @@
-﻿using CondominiumProject.Models;
+﻿using CondominiumProject.Database;
+using CondominiumProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
-
+using System.Data.SqlClient;
 
 namespace CondominiumProject.Controllers
 {
@@ -32,40 +33,63 @@ namespace CondominiumProject.Controllers
             return projectslist;
         }
 
-
         public IActionResult ViewProject(string IdProject, string email)
         {
-            try
+
+            List<HabitationalProjects> projectsList = GetHabitationalProject();
+
+            if (int.TryParse(IdProject, out int projectId))
             {
-                List<HabitationalProjects> projectsList = GetHabitationalProject();
+                var selectedProject = projectsList.FirstOrDefault(p => p.IdProject == projectId);
 
-                if (int.TryParse(IdProject, out int projectId))
+                if (selectedProject != null)
                 {
-                    var selectedProject = projectsList.FirstOrDefault(p => p.IdProject == projectId);
-
-                    if (selectedProject != null)
+                    var selectedProjectData = new ProjectData
                     {
+                        IdProject = (int)selectedProject.IdProject,
+                        Name = selectedProject.Name,
+                        Logo = selectedProject.Logo,
+                    };
 
-                        var selectedProjectData = new ProjectData
-                        {
-                            IdProject = (int)selectedProject.IdProject,
-                            Name = selectedProject.Name,
-                            Logo = selectedProject.Logo,
-                        };
+                    TempData["SelectedProjectData"] = JsonConvert.SerializeObject(selectedProjectData);
 
-                        TempData["SelectedProjectData"] = JsonConvert.SerializeObject(selectedProjectData);
+                    List<HabitationDetails> habitationDetailsList = GetHabitationDetailsForProject(IdProject);
 
-                        Console.WriteLine($"Selected Project: {selectedProject.Name}");
+                    // Validar si habitationDetailsList es nulo antes de usarlo
+                    if (habitationDetailsList != null)
+                    {
+                        Console.WriteLine($"Number of habitation details: {habitationDetailsList.Count}");
+                        TempData["HabitationDetails"] = JsonConvert.SerializeObject(habitationDetailsList);
                         return RedirectToAction("ProjectIndex", "RootViews", new { email });
+                    }
+                    else
+                    {
+                        Console.WriteLine("HabitationDetailsList is null.");
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error en ViewProject: {ex.Message}");
-            }
             return RedirectToAction("Error", "RootViews");
         }
+
+        private List<HabitationDetails> GetHabitationDetailsForProject(string IdProject)
+        {
+
+            var projectId = Convert.ToInt32(IdProject);
+
+            var queryParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@ProjectId", projectId)
+                };
+
+            // Asegúrate de que ExecuteQuery devuelve List<HabitationDetails>
+            var habitationDetailsList = DatabaseHelper.ExecuteQuery<HabitationDetails>("GetHabitationDetailsForProject", queryParameters);
+
+            return habitationDetailsList;
+        }
+
+
+
+
 
 
 

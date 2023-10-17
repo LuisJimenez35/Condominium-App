@@ -6,35 +6,9 @@
 
 @model CondominiumProject.Models.ProjectData
 
+
 <body>
-    <script>
-        $(document).ready(function () {
-            // Agrega un listener al evento input del input con id "searchInput"
-            $('#searchInput').on('input', function () {
-                searchProjects();
-            });
 
-            function searchProjects() {
-                var searchTerm = $('#searchInput').val().toLowerCase();
-
-                $('.card').each(function () {
-                    var $card = $(this);
-                    var projectName = $card.find('.card-title').text().toLowerCase();
-                    var projectTextTitle = $card.find('.tile_card').text().toLowerCase();
-                    var prjectcode = $card.find('.code').text().toLowerCase();
-                    var projectText = $card.find('.card-text').text().toLowerCase();
-                    var projectdirection = $card.find('.direction').text().toLowerCase();
-
-                    // Muestra u oculta el proyecto en función de si coincide con la búsqueda
-                    if (projectName.includes(searchTerm) || projectTextTitle.includes(searchTerm) || projectText.includes(searchTerm)) {
-                        $card.show();
-                    } else {
-                        $card.hide();
-                    }
-                });
-            }
-        });
-    </script>
 
 
 
@@ -213,17 +187,22 @@
                                     <th scope="col">Number House</th>
                                     <th scope="col">DNI</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Name</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>119010622</td>
-                                    <td>Luis Mora</td>
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                </tr>
+                                @if (ViewBag.HabitationDetailsList != null)
+                                {
+                                    foreach (var habitationDetails in ViewBag.HabitationDetailsList)
+                                    {
+                                        <tr>
+                                            <th scope="row">@habitationDetails.IDHabitation</th>
+                                            <td>@habitationDetails.DNI</td>
+                                            <td>@habitationDetails.FirsName @habitationDetails.LastName</td>
+                                            <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                        </tr>
+                                    }
+                                }
                             </tbody>
                         </table>
                         <button type="button" class="btn btn-primary">Add</button>

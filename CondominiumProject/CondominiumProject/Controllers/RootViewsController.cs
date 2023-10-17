@@ -71,11 +71,20 @@ namespace CondominiumProject.Controllers
             if (TempData.TryGetValue("SelectedProjectData", out object jsonDataObj) && jsonDataObj is string jsonData)
             {
                 var selectedProjectData = JsonConvert.DeserializeObject<ProjectData>(jsonData);
-                ViewBag.email = Request.Query["email"].ToString();
-                return View(selectedProjectData); 
+                ViewBag.email = email;
+
+                // Verificar si hay detalles de habitación en TempData
+                if (TempData.TryGetValue("HabitationDetails", out object habitationDetailsDataObj) && habitationDetailsDataObj is string habitationDetailsData)
+                {
+                    var habitationDetailsList = JsonConvert.DeserializeObject<List<HabitationDetails>>(habitationDetailsData);
+                    ViewBag.HabitationDetailsList = habitationDetailsList;
+                }
+
+                return View(selectedProjectData);
             }
-            return View(); 
+            return View();
         }
+
 
 
 

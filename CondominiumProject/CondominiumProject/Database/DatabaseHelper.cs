@@ -77,5 +77,57 @@ namespace CondominiumProject.Database
                 throw;
             }
         }
+
+        // Select con mapeo a lista del tipo T
+        public static List<T> ExecuteQuery<T>(string procedureName, List<SqlParameter> param)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = procedureName;
+
+                    if (param != null)
+                    {
+                        foreach (SqlParameter p in param)
+                        {
+                            cmd.Parameters.Add(p);
+                        }
+                    }
+
+                    // Utiliza un SqlDataReader para ejecutar el procedimiento almacenado que devuelve un conjunto de resultados
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        List<T> result = new List<T>();
+
+                        // Mapea los resultados del lector al tipo T
+                        while (reader.Read())
+                        {
+                            T item = Activator.CreateInstance<T>();
+
+                            foreach (var prop in typeof(T).GetProperties())
+                            {
+                                if (!reader.IsDBNull(reader.GetOrdinal(prop.Name)))
+                                {
+                                    prop.SetValue(item, reader[prop.Name], null);
+                                }
+                            }
+
+                            result.Add(item);
+                        }
+
+                        return result;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -206,7 +206,7 @@
                                         </div>
                                         <form asp-controller="UserGuard" asp-action="DeleteGuard">
                                             <div class="modal-body">
-                                                <p>¿Estas seguro que deseas eliminar el Guardia @guard.UserName?</p>
+                                                <p>¿Estas seguro que deseas eliminar el Guardia <br><h2>@guard.UserName?</h2></p>
                                                 <input name="IDGuard" type="hidden" id="modalRootId_@guard.IDGuard" value="@guard.IDGuard" />
                                                 <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
                                             </div>

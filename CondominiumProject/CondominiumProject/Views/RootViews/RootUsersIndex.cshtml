@@ -206,7 +206,7 @@
                                         </div>
                                         <form asp-controller="RootUsers" asp-action="DeleteUserRoot">
                                             <div class="modal-body">
-                                                <p>¿Estas seguro que deseas eliminar el administrador @root_user.UserName?</p>
+                                                <p>¿Estas seguro que deseas eliminar el administrador <br><h2>@root_user.UserName?</h2></p>
                                                 <input name="ID" type="hidden" id="modalRootId_@root_user.ID" value="@root_user.ID" />
                                                 <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
                                             </div>

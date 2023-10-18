@@ -7,7 +7,6 @@
 <body>
     <script>
         $(document).ready(function () {
-            // Agrega un listener al evento input del input con id "searchInput"
             $('#searchInput').on('input', function () {
                 searchProjects();
             });
@@ -23,7 +22,6 @@
                     var projectText = $card.find('.card-text').text().toLowerCase();
                     var projectdirection = $card.find('.direction').text().toLowerCase();
 
-                    // Muestra u oculta el proyecto en función de si coincide con la búsqueda
                     if (projectName.includes(searchTerm) || projectTextTitle.includes(searchTerm) || projectText.includes(searchTerm)) {
                         $card.show();
                     } else {
@@ -33,8 +31,6 @@
             }
         });
     </script>
-
-
 
     <header>
         <nav>
@@ -46,7 +42,7 @@
                             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
                             <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
 
-                        </svg> Inicio
+                        </svg> Home
                     </a>
                 </li>
                 <li class="nav-item">
@@ -54,7 +50,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                             <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
-                        </svg> Condominos
+                        </svg> Condominums
                     </a>
                 </li>
                 <li class="nav-item">
@@ -63,14 +59,14 @@
                              fill="currentColor" class="bi bi-shield-fill-check" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                   d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z" />
-                        </svg> Guardias
+                        </svg> Guards
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="@Url.Action("RootUsersIndex","RootViews", new {email = ViewBag.email})">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" />
-                        </svg> Administradores
+                        </svg> Administrators
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -86,7 +82,7 @@
                             <a class="dropdown-item" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
                                     <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z" />
-                                </svg>Cambiar Contraseña
+                                </svg>Change Password
                             </a>
                         </li>
                         <li>
@@ -94,7 +90,7 @@
                             <a class="dropdown-item" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
                                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
-                                </svg> Auditoria
+                                </svg> Auditory
                             </a>
                         </li>
                         <li>
@@ -129,7 +125,7 @@
                         <a class="dropdown-item" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
                                 <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z" />
-                            </svg>Cambiar Contraseña
+                            </svg>Change Password
                         </a>
                     </li>
                     <li>
@@ -137,7 +133,7 @@
                         <a class="dropdown-item" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
                                 <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
-                            </svg> Auditoria
+                            </svg> Auditory
                         </a>
                     </li>
                     <li>
@@ -155,55 +151,53 @@
             </li>
         </ul>
     </div>
+
+    <br>
     <br>
 
     <div class="text-center">
         <div class="mb-1 bg-light">
-            <input type="text" id="searchInput" class="form-control" placeholder="Buscar Proyecto" />
-            <div id="emailHelp" class="form-text">Puedes colocar cualquier dato para buscar el proyecto</div>
+            <input type="text" id="searchInput" class="form-control" placeholder="Search project" />
+            <div id="emailHelp" class="form-text"><strong>You can enter any data to search for the project</strong></div>
         </div>
-
         @if (ViewBag.RootHasAccessToProjects)
         {
             <div class="row">
 
                 @foreach (var habitational_project in ViewBag.ProjectLists)
                 {
-                    <div class="card m-2" style="width: 16rem;">
+                    <div class="card m-2" style="width: 16rem; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         <form asp-controller="HabitationProjectC" asp-action="ViewProject">
-                            <img src="../@habitational_project.Logo" class="card-img-top">
+                            <img src="../@habitational_project.Logo" class="card-img-top" alt="@habitational_project.Name" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
                             <div class="card-body">
                                 <h5 class="card-title">@habitational_project.Name</h5>
-                                <p class="card-text-title"><p class="tile_card">Codigo Proyecto <br><br>@habitational_project.Code</p>
-                                <p class="card-text"><p class="tile_card">Direccion <br><br>@habitational_project.Adress</p>
-                                <p class="card-text">+506 @habitational_project.OfficeTelephone</p>
+                                <p class="card-text"><strong>Project Code</strong><br>@habitational_project.Code</p>
+                                <p class="card-text"><strong>Address</strong><br>@habitational_project.Adress</p>
+                                <p class="card-text"><strong>Office Telephone</strong><br>+506 @habitational_project.OfficeTelephone</p>
                             </div>
-                            <div class="container overflow-hidden text-center">
-                                <div class="card-footer">
-                                    <div class="row gx-5">
-                                        <div class="col">
-                                            <button type="submit" class="btn btn-outline-primary">Acceder a Proyecto</button>
-                                            <input name="IdProject" type="hidden" class="form-control" value="@habitational_project.IdProject" />
-                                            <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="col">
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Editar Proyecto</button>
-                                        </div>
+                            <div class="card-footer">
+                                <div class="row gx-5">
+                                    <div class="col">
+                                        <button type="submit" style="font-size:18px" class="btn btn-outline-primary">Access to Project </button>
+                                        <input name="IdProject" type="hidden" class="form-control" value="@habitational_project.IdProject" />
+                                        <input name="email" type="hidden" class="form-control" value="@ViewBag.email" />
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col">
+                                        <button type="button" style="font-size:18px" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal2_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Edit the Project</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
 
-
                     <!-- Modal Editar Proyecto-->
                     <div class="modal fade" id="exampleModal2_@habitational_project.Code" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Proyecto</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Project</h1>
                                 </div>
                                 <form asp-controller="Proyects" asp-action="EditProject">
                                     <div class="modal-body">
@@ -215,57 +209,54 @@
                                                 <input name="Adress" type="text" class="form-control" placeholder="@habitational_project.Adress" aria-label="Direccion" required>
                                             </div>
                                             <div class="col">
-                                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="@habitational_project.OfficeTelephone" aria-label="Telefono" required>
+                                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="+506 @habitational_project.OfficeTelephone" aria-label="Telefono" required>
                                             </div>
                                             <div class="input-group mb-3">
                                                 <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
-                                                <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
+                                                <label class="input-group-text" for="inputGroupFile02">Logo</label>
                                             </div>
                                             <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code" />
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary">Editar</button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Eliminar </button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@habitational_project.Code" data-code="@habitational_project.Code" data-Name="@habitational_project.Name" data-adress="@habitational_project.Adress" data-phone="@habitational_project.OfficeTelephone">Delete Project</button>
                                     </div>
                                 </form>
 
                             </div>
                         </div>
                     </div>
-
-
 
                     @* Modal Eliminar proyecto *@
                     <div class="modal fade" id="staticBackdrop_@habitational_project.Code" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Proyecto</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Project</h1>
                                 </div>
                                 <form asp-controller="Proyects" asp-action="DeleteProject">
                                     <div class="modal-body">
-                                        <p>¿Estas seguro que deseas eliminar el Proyecto <h2 class="font-bold">@habitational_project.Name</h2></p>
+                                        <p>¿Are you sure you want to delete Project <h2 class="font-bold">@habitational_project.Name </h2></p>
                                         <input name="Code" type="hidden" id="modalRootId_@habitational_project.Code" value="@habitational_project.Code" />
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 }
-
             </div>
         }
     </div>
 
     <footer class="bg-light">
         <br>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear Proyecto</button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Habitational Project</button>
     </footer>
 
     <!-- Modal Create Proyect-->
@@ -274,38 +265,36 @@
             <div class="modal-content">
                 <form asp-controller="Proyects" asp-action="CreateProject">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Proyecto</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Habitational Project</h1>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
-                                <input name="Name" type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" required>
+                                <input name="Name" type="text" class="form-control" placeholder="Name" aria-label="Name" required>
                             </div>
                             <div class="col">
-                                <input name="Adress" type="text" class="form-control" placeholder="Direccion" aria-label="Direccion" required>
+                                <input name="Adress" type="text" class="form-control" placeholder="Address" aria-label="Address" required>
                             </div>
                             <div class="col">
-                                <input name="Code" type="text" class="form-control" placeholder="Codigo" aria-label="Codigo" required>
+                                <input name="Code" type="text" class="form-control" placeholder="Code" aria-label="Code" required>
                             </div>
                             <div class="col">
-                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="Telefono" aria-label="Telefono" required>
+                                <input name="OfficeTelephone" type="text" class="form-control" placeholder="Office Telehone" aria-label="Telefono" required>
                             </div>
                             <div class="input-group mb-3">
                                 <input name="Logo" type="file" class="form-control" id="inputGroupFile02" required>
-                                <label class="input-group-text" for="inputGroupFile02">Logotipo</label>
+                                <label class="input-group-text" for="inputGroupFile02">Logo</label>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Crear Proyecto</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Create</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-
 
     <div class="space-container">
     </div>
@@ -314,36 +303,36 @@
         <footer class="py-0 my-2">
             <ul class="nav justify-content-center border-bottom ">
                 <li class="nav-item">
-                    <a href="@Url.Action("RootIndex","RootViews")" class="nav-link px-2">
+                    <a href="@Url.Action("RootIndex","RootViews", new {email = ViewBag.email})" class="nav-link px-2">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
                             <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
-                        </svg><br> Inicio
+                        </svg><br> Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 ">
+                    <a href="@Url.Action("UsersIndex","RootViews", new {email = ViewBag.email})" class="nav-link px-2 ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                             <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
-                        </svg><br> Condominos
+                        </svg><br> Condominiums
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 ">
+                    <a href="@Url.Action("GuardsIndex","RootViews", new {email = ViewBag.email})" class="nav-link px-2 ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" class="bi bi-shield-fill-check" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                   d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z" />
-                        </svg><br> Guardias
+                        </svg><br> Guards
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="@Url.Action("RootUsersIndex","RootViews")" class="nav-link px-2 ">
+                    <a href="@Url.Action("RootUsersIndex","RootViews", new {email = ViewBag.email})" class="nav-link px-2 ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z" />
-                        </svg><br> Administradores
+                        </svg><br> Administrators
                     </a>
                 </li>
             </ul>

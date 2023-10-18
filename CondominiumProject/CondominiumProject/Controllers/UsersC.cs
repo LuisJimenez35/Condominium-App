@@ -14,7 +14,6 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
-
         public IActionResult CreateUser(string DNI, string FirsName, string Lastname, string email1, string Telephone1, string Telephone2, string Email, string Picture, string Password)
         {
             int validationResult = ValidateAndInsertUser(DNI, FirsName, Lastname, email1, Telephone1, Telephone2, Email, Picture, Password);

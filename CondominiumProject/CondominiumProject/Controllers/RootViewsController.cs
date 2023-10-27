@@ -153,6 +153,9 @@ namespace CondominiumProject.Controllers
 
             foreach (DataRow dr in ds.Rows)
             {
+                int? idHabitation = dr["IDHabitation"] != DBNull.Value ? Convert.ToInt32(dr["IDHabitation"]) : (int?)null;
+                string projectName = dr["ProjectName"] != DBNull.Value ? dr["ProjectName"].ToString() : null;
+
                 usersList.Add(new Users
                 {
                     IdUser = Convert.ToInt32(dr["IdUser"]),
@@ -163,7 +166,9 @@ namespace CondominiumProject.Controllers
                     Telephone2 = dr["Telephone2"].ToString(),
                     Email = dr["Email"].ToString(),
                     Picture = dr["Picture"].ToString(),
-                    Password = dr["Password"].ToString()
+                    Password = dr["Password"].ToString(),
+                    IDHabitation = idHabitation,
+                    ProjectName = projectName
                 });
             }
             return usersList;

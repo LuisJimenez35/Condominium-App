@@ -2,11 +2,15 @@
 using CondominiumProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Net;
+using System.Xml.Linq;
 
 namespace CondominiumProject.Controllers
 {
@@ -71,7 +75,7 @@ namespace CondominiumProject.Controllers
                         else
                         {
                             Console.WriteLine("VisitDetailsList is null.");
-                        }                          
+                        }
                     }
                     else
                     {
@@ -82,13 +86,13 @@ namespace CondominiumProject.Controllers
             return RedirectToAction("Error", "RootViews");
         }
 
-        public IActionResult AsignHouse(string IDProyect, string IDHabitation, string email, string IdUser) 
+        public IActionResult AsignHouse(string IDProyect, string IDHabitation, string email, string IdUser, string username)
         {
             int validationres = ValidateAndAsignHouse(IDProyect, IDHabitation, email, IdUser);
 
             switch (validationres)
             {
-                   case 1:
+                case 1:
                     ViewBag.Error = new ErrorHandler()
                     {
                         Title = "Incorrect Data",
@@ -99,8 +103,24 @@ namespace CondominiumProject.Controllers
                     return View("ErrorHandler");
                 case 2:
                     return View("Error");
+
                 case 3:
-                    return RedirectToAction("UsersIndex", "RootViews", new { email });
+                    int sendEmail = SendEmail(username,IDHabitation,email);
+
+                    if(sendEmail == 1)
+                    {
+                        return RedirectToAction("UsersIndex", "RootViews", new { email });  
+                    }
+                    else {
+                        ViewBag.Error = new ErrorHandler()
+                        {
+                            Title = "Incorrect Data",
+                            ErrorMessage = "Datos duplicados",
+                            ActionMessage = "Go to login",
+                            Path = "/Login"
+                        };
+                        return View("ErrorHandler");
+                    }
                 case 0:
                     ViewBag.Error = new ErrorHandler()
                     {
@@ -112,6 +132,51 @@ namespace CondominiumProject.Controllers
                     return View("ErrorHandler");
                 default:
                     return View("Error");
+            }
+        }
+
+        public int SendEmail(string username, string IDHabitation, string email)
+        {
+
+            try
+            {
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress("soportprimeprogram@gmail.com");
+                message.To.Add(email);
+                message.Subject = "Register Conformation";
+
+                string body = string.Format("<div style='font-family: Arial, sans-serif; color: #333;'>" +
+                             "<h2 style='color: #007BFF;'>Registration Confirmation!</h2>" +
+                             "<p>Dear {0},</p>" +
+                             "<p>Welcome to our system. Your registration for the room has been successfully confirmed.</p>" +
+                             "<p>Below are the details of your registration:</p>" +
+                             "<ul>" +
+                             "<li><strong>Name:</strong> {0}</li>" +
+                             "<li><strong>Email:</strong> {1}</li>" +
+                             "<li><strong>Room:</strong> {2}</li>" +
+                             "</ul>" +
+                             "<p style='background-color: #f8f9fa; padding: 10px; border-radius: 5px;'>" +
+                             "Thank you for choosing our platform. If you have any questions, feel free to contact us." +
+                             "</p>" +
+                             "<p>Best regards,<br>The [Your Platform Name] Team</p>" +
+                             "</div>", username, email, IDHabitation);
+                message.Body = body;
+                message.IsBodyHtml = true;
+
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                smtpClient.Credentials = new NetworkCredential("soportprimeprogram@gmail.com", "kihjvhoodlmvgmvw");
+                smtpClient.EnableSsl = true;
+
+
+                smtpClient.Send(message);
+
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("No se pudo enviar el correo. Error: " + ex.Message);
+
+                return 2;
             }
         }
 
@@ -137,6 +202,10 @@ namespace CondominiumProject.Controllers
 
             return -2;
         }
+
+
+
+
 
         private List<HabitationDetails> GetHabitationDetailsForProject(string IdProject)
         {
@@ -168,12 +237,6 @@ namespace CondominiumProject.Controllers
 
             return visitDetailsList;
         }
-
-
-
-
-
-
 
     }
 }

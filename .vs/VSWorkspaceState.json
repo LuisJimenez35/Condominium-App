@@ -3,8 +3,10 @@
     "",
     "\\CondominiumProject",
     "\\CondominiumProject\\CondominiumProject",
-    "\\CondominiumProject\\CondominiumProject\\Controllers"
+    "\\CondominiumProject\\CondominiumProject\\Controllers",
+    "\\CondominiumProject\\CondominiumProject\\Views",
+    "\\CondominiumProject\\CondominiumProject\\Views\\RootViews"
   ],
-  "SelectedNode": "\\CondominiumProject\\CondominiumProject\\Controllers\\RootViewsController.cs",
+  "SelectedNode": "\\CondominiumProject\\CondominiumProject\\Views\\RootViews\\RootIndex.cshtml",
   "PreviewInSolutionExplorer": false
 }

@@ -32,7 +32,7 @@ namespace CondominiumProject.Controllers
 
                     if (validationResult == 1)
                     {
-                        return RedirectToAction("UserIndex", "Home" , new {email}); 
+                        return RedirectToAction("HomeIndex", "UsersViews" , new {email}); 
                     }
                     else 
                     {

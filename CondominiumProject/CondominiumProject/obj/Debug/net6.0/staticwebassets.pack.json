@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\AppImages\\UserImages\\Visa.png"
     },
     {
+      "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\AppImages\\UserImages\\png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png",
+      "PackagePath": "staticwebassets\\AppImages\\UserImages\\png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png"
+    },
+    {
       "Id": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\wwwroot\\css\\PrincipalRoot.css",
       "PackagePath": "staticwebassets\\css\\PrincipalRoot.css"
     },

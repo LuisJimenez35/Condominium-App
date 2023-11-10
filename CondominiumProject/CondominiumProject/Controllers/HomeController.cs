@@ -14,13 +14,6 @@ namespace CondominiumProject.Controllers
 		{
 			_logger = logger;
 		}
-    
-		//Ventana Usuario basico
-		public IActionResult UserIndex()
-		{
-            ViewBag.email = Request.Query["email"].ToString();
 
-            return View();
-		}
 	}
 }

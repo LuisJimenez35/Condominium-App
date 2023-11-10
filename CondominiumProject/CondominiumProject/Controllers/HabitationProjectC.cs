@@ -86,9 +86,9 @@ namespace CondominiumProject.Controllers
             return RedirectToAction("Error", "RootViews");
         }
 
-        public IActionResult AsignHouse(string IDProyect, string IDHabitation, string email, string IdUser, string username)
+        public IActionResult AsignHouse(string IDProyect, string IDHabitation, string email1, string IdUser, string username, string email)
         {
-            int validationres = ValidateAndAsignHouse(IDProyect, IDHabitation, email, IdUser);
+            int validationres = ValidateAndAsignHouse(IDProyect, IDHabitation, email1, IdUser, email);
 
             switch (validationres)
             {
@@ -105,7 +105,7 @@ namespace CondominiumProject.Controllers
                     return View("Error");
 
                 case 3:
-                    int sendEmail = SendEmail(username,IDHabitation,email);
+                    int sendEmail = SendEmail(username,IDHabitation,email1,email);
 
                     if(sendEmail == 1)
                     {
@@ -135,14 +135,13 @@ namespace CondominiumProject.Controllers
             }
         }
 
-        public int SendEmail(string username, string IDHabitation, string email)
+        public int SendEmail(string username, string IDHabitation, string email1, string email)
         {
-
             try
             {
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress("soportprimeprogram@gmail.com");
-                message.To.Add(email);
+                message.To.Add(email1);
                 message.Subject = "Register Conformation";
 
                 string body = string.Format("<div style='font-family: Arial, sans-serif; color: #333;'>" +
@@ -159,7 +158,7 @@ namespace CondominiumProject.Controllers
                              "Thank you for choosing our platform. If you have any questions, feel free to contact us." +
                              "</p>" +
                              "<p>Best regards,<br>The [Your Platform Name] Team</p>" +
-                             "</div>", username, email, IDHabitation);
+                             "</div>", username, email1, IDHabitation);
                 message.Body = body;
                 message.IsBodyHtml = true;
 
@@ -180,7 +179,7 @@ namespace CondominiumProject.Controllers
             }
         }
 
-        private int ValidateAndAsignHouse(string IDProyect, string IDHabitation, string email, string IdUser)
+        private int ValidateAndAsignHouse(string IDProyect, string IDHabitation, string email, string IdUser,string email1)
         {
             var projectId = Convert.ToInt32(IDProyect);
             var habitationId = Convert.ToInt32(IDHabitation);

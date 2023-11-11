@@ -105,22 +105,51 @@ namespace CondominiumProject.Controllers
                     return View("Error");
 
                 case 3:
-                    int sendEmail = SendEmail(username,IDHabitation,email1,email);
 
-                    if(sendEmail == 1)
+                    var projectId = Convert.ToInt32(IDProyect);
+
+                    var queryParameters = new List<SqlParameter>
                     {
-                        return RedirectToAction("UsersIndex", "RootViews", new { email });  
-                    }
-                    else {
-                        ViewBag.Error = new ErrorHandler()
+                        new SqlParameter("@IdProject", projectId)
+                    };
+
+                    var resultado = DatabaseHelper.ExecuteQuery("spGetHabitationalProjectByID", queryParameters);
+
+                    if (resultado.Rows.Count > 0)
+                    {
+                        var selectedProject = new HabitationalProjects
                         {
-                            Title = "Incorrect Data",
-                            ErrorMessage = "Datos duplicados",
-                            ActionMessage = "Go to login",
-                            Path = "/Login"
+                            Name = resultado.Rows[0]["Name"].ToString(),
+                            Adress = resultado.Rows[0]["Adress"].ToString(),
+                            OfficeTelephone = resultado.Rows[0]["OfficeTelephone"].ToString()
                         };
-                        return View("ErrorHandler");
+
+                        string projectName = selectedProject.Name;
+                        string Telephone = selectedProject.OfficeTelephone;
+                        string Adress = selectedProject.Adress;
+
+                        int sendEmail = SendEmail(username, IDHabitation, email1, email, projectName, Telephone, Adress);
+
+                        if (sendEmail == 1)
+                        {
+                            return RedirectToAction("UsersIndex", "RootViews", new { email });
+                        }
+                        else
+                        {
+                            ViewBag.Error = new ErrorHandler()
+                            {
+                                Title = "Incorrect Data",
+                                ErrorMessage = "Datos duplicados",
+                                ActionMessage = "Go to login",
+                                Path = "/Login"
+                            };
+                            return View("ErrorHandler");
+                        }
+
                     }
+                    
+                    return View("ErrorHandler");
+
                 case 0:
                     ViewBag.Error = new ErrorHandler()
                     {
@@ -135,7 +164,7 @@ namespace CondominiumProject.Controllers
             }
         }
 
-        public int SendEmail(string username, string IDHabitation, string email1, string email)
+        public int SendEmail(string username, string IDHabitation, string email1, string email, string projectName, string Telephone, string Adress)
         {
             try
             {
@@ -145,27 +174,28 @@ namespace CondominiumProject.Controllers
                 message.Subject = "Register Conformation";
 
                 string body = string.Format("<div style='font-family: Arial, sans-serif; color: #333;'>" +
-                             "<h2 style='color: #007BFF;'>Registration Confirmation!</h2>" +
-                             "<p>Dear {0},</p>" +
-                             "<p>Welcome to our system. Your registration for the room has been successfully confirmed.</p>" +
-                             "<p>Below are the details of your registration:</p>" +
-                             "<ul>" +
-                             "<li><strong>Name:</strong> {0}</li>" +
-                             "<li><strong>Email:</strong> {1}</li>" +
-                             "<li><strong>Room:</strong> {2}</li>" +
-                             "</ul>" +
-                             "<p style='background-color: #f8f9fa; padding: 10px; border-radius: 5px;'>" +
-                             "Thank you for choosing our platform. If you have any questions, feel free to contact us." +
-                             "</p>" +
-                             "<p>Best regards,<br>The [Your Platform Name] Team</p>" +
-                             "</div>", username, email1, IDHabitation);
+                                    "<h2 style='color: #007BFF;'>Registration Confirmation!</h2>" +
+                                    "<p>Dear {0},</p>" +
+                                    "<p>Welcome to our system. Your registration for the room has been successfully confirmed.</p>" +
+                                    "<p>Below are the details of your registration:</p>" +
+                                    "<ul>" +
+                                    "<li><strong>Name:</strong> {0}</li>" +
+                                    "<li><strong>Email:</strong> {1}</li>" +
+                                    "<li><strong>Room:</strong> {2}</li>" +
+                                    "<li><strong>Habitational Project:</strong> {3}</li>" +
+                                    "<li><strong>Direction:</strong> {4}</li>" +
+                                    "</ul>" +
+                                    "<p style='background-color: #f8f9fa; padding: 10px; border-radius: 5px;'>" +
+                                    "Thank you for choosing our platform. If you have any questions, feel free to contact us +506 {5}" +
+                                    "</p>" +
+                                    "<p>Best regards,<br>The [Condominium APP] Team</p>" +
+                                    "</div>", username, email1, IDHabitation, projectName, Adress, Telephone);
                 message.Body = body;
                 message.IsBodyHtml = true;
 
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
                 smtpClient.Credentials = new NetworkCredential("soportprimeprogram@gmail.com", "kihjvhoodlmvgmvw");
                 smtpClient.EnableSsl = true;
-
 
                 smtpClient.Send(message);
 
@@ -179,7 +209,7 @@ namespace CondominiumProject.Controllers
             }
         }
 
-        private int ValidateAndAsignHouse(string IDProyect, string IDHabitation, string email, string IdUser,string email1)
+        private int ValidateAndAsignHouse(string IDProyect, string IDHabitation, string email, string IdUser, string email1)
         {
             var projectId = Convert.ToInt32(IDProyect);
             var habitationId = Convert.ToInt32(IDHabitation);
@@ -201,10 +231,6 @@ namespace CondominiumProject.Controllers
 
             return -2;
         }
-
-
-
-
 
         private List<HabitationDetails> GetHabitationDetailsForProject(string IdProject)
         {

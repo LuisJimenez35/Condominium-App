@@ -9,69 +9,69 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CondominiumProject
 build_property.RootNamespace = CondominiumProject
-build_property.ProjectDir = C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProject\CondominiumProject\
+build_property.ProjectDir = C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\Condominium-App\CondominiumProject\CondominiumProject\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\CondominiumApp\CondominiumProject\CondominiumProject
+build_property.MSBuildProjectDirectory = C:\Users\LuisM\OneDrive\Escritorio\GithubCarpets\Condominium-App\CondominiumProject\CondominiumProject
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Guard/GuardIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/Guard/GuardIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VhcmRcR3VhcmRJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Home/UserIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/Home/UserIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VySW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Login/Index.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/RootViews/GuardsIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/RootViews/GuardsIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vdFZpZXdzXEd1YXJkc0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/RootViews/ProjectIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/RootViews/ProjectIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vdFZpZXdzXFByb2plY3RJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/RootViews/RootIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/RootViews/RootIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vdFZpZXdzXFJvb3RJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/RootViews/RootUsersIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/RootViews/RootUsersIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vdFZpZXdzXFJvb3RVc2Vyc0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/RootViews/UsersIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/RootViews/UsersIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vdFZpZXdzXFVzZXJzSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Shared/Error.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Shared/ErrorHandler.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/Shared/ErrorHandler.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9ySGFuZGxlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/UsersViews/HomeIndex.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/UsersViews/HomeIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNWaWV3c1xIb21lSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/_ViewImports.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/_ViewStart.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/CondominiumApp/CondominiumProject/CondominiumProject/Views/Shared/_Layout.cshtml]
+[C:/Users/LuisM/OneDrive/Escritorio/GithubCarpets/Condominium-App/CondominiumProject/CondominiumProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s69zww0nf7

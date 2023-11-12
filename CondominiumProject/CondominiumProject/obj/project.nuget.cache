@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LFtctpvuxsl5K7gmsxt8toTJA7qTUzaRvkzd311V623R5hGEgFXJLontwAtkY+LjECxk7LjV4I/zk2LUauzyyA==",
+  "dgSpecHash": "Dr5gO+pJOY30g2xjEwUJyEwgn4YsCRNvxagczBVE159o7o/bRiJ2a/TZBMBd68tjRjxvSzIPh1hpZvFGKs4r7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\CondominiumApp\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj",
+  "projectFilePath": "C:\\Users\\LuisM\\OneDrive\\Escritorio\\GithubCarpets\\Condominium-App\\CondominiumProject\\CondominiumProject\\CondominiumProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LuisM\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\LuisM\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

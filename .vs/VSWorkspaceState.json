@@ -5,8 +5,9 @@
     "\\CondominiumProject\\CondominiumProject",
     "\\CondominiumProject\\CondominiumProject\\Controllers",
     "\\CondominiumProject\\CondominiumProject\\Views",
-    "\\CondominiumProject\\CondominiumProject\\Views\\RootViews"
+    "\\CondominiumProject\\CondominiumProject\\Views\\RootViews",
+    "\\CondominiumProject\\CondominiumProject\\Views\\UsersViews"
   ],
-  "SelectedNode": "\\CondominiumProject\\CondominiumProject.sln",
+  "SelectedNode": "\\CondominiumProject\\CondominiumProject\\Views\\UsersViews\\HomeIndex.cshtml",
   "PreviewInSolutionExplorer": false
 }

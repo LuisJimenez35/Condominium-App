@@ -42,16 +42,16 @@
         </nav>
     </header>
 
-    <div class="container text-center">
+    <div class="container text-center"/>
         <div class="row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Condominio Cedro Real</h5>
+                        <h5 class="card-title">@ViewBag.Users[0].ProjectName</h5>
                         <div class="container px-4 text-center">
                             <div class="row gx-5">
                                 <div class="col">
-                                    <div class="p-3">Habitation: #5</div>
+                                    <div class="p-3">Habitation: #@ViewBag.Users[0].IDHabitation</div>
                                 </div>
                                 <div class="col">
                                     <div class="p-3">Email: @ViewBag.Users[0].Email</div>
@@ -75,16 +75,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <tr>
-                                    <th scope="row">123434</th>
-                                    <td>Mazda</td>
-                                    <td>Hello</td>
-                                    <td>Red</td>
-                                    <td><button type="button" class="btn btn-danger">Delete Car</button></td>
-                                </tr>
-
+                                @if (ViewBag.Vehicles != null && ViewBag.Vehicles.Count > 0)
+                                {
+                                    <tr>
+                                        <th scope="row">@ViewBag.Vehicles[0].Plate</th>
+                                        <td>@ViewBag.Vehicles[0].Marc</td>
+                                        <td>@ViewBag.Vehicles[0].Model</td>
+                                        <td>@ViewBag.Vehicles[0].Color</td>
+                                        <td><button type="button" class="btn btn-danger">Delete Car</button></td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="5">You have no vehicles at the moment</td>
+                                    </tr>
+                                }
                             </tbody>
+
                         </table>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Add Car</button>
                     </div>
@@ -125,33 +133,36 @@
                 <div class="modal fade" id="editModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editModalLabel">Add Vehicle</h1>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <input name="Marc" type="text" class="form-control" placeholder="Marc" aria-label="Marc" required>
+                            <form asp-action="CreateVehicle" asp-controller="VehiclesC">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="editModalLabel">Add Vehicle</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input name="Marc" type="text" class="form-control" placeholder="Marc" aria-label="Marc" required>
+                                        </div>
+                                        <div class="col">
+                                            <input name="Model" type="text" class="form-control" placeholder="Model" aria-label="Model" required>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <input name="Moddel" type="text" class="form-control" placeholder="Model" aria-label="Model" required>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input name="Color" type="text" class="form-control" placeholder="Color" aria-label="Color" required>
+                                        </div>
+                                        <div class="col">
+                                            <input name="Plate" type="text" class="form-control" placeholder="Plate" aria-label="Plate" required>
+                                        </div>
+                                        <input name="IdUser" type="hidden" class="form-control" value="@ViewBag.Users[0].IdUser">
+                                        <input name="email" type="hidden" class="form-control" value="@ViewBag.Users[0].Email">
                                     </div>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <input name="Color" type="text" class="form-control" placeholder="Color" aria-label="Color" required>
-                                    </div>
-                                    <div class="col">
-                                        <input name="Plate" type="text" class="form-control" placeholder="Plate" aria-label="Plate" required>
-                                    </div>
-                                    <input name="IdUser" type="hidden" class="form-control" value="@ViewBag.Users[0].IdUser">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-success">Add Vehicle</button>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-success">Add Vehicle</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -168,7 +179,7 @@
                             <label for="inputVistData1" class="form-label">General Visist Data</label>
                             <div class="row" id="inputVistData1">
                                 <div class="col">
-                                    
+
                                     <input name="DNI" type="text" class="form-control" placeholder="Visit DNI" aria-label="DNI" required>
                                 </div>
                                 <div class="col">

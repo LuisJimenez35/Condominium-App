@@ -77,6 +77,10 @@ namespace CondominiumProject.Controllers
             }
         }
 
+
+
+
+
         private int ValidateAndInsertUser(string DNI, string FirsName, string Lastname, string email, string Telephone1, string Telephone2, string Email, string Picture, string Password)
         {
             var queryParameters = new List<SqlParameter>

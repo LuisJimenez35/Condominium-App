@@ -13,6 +13,7 @@
         public string? Password { get; set; }
         public int? IDHabitation { get; set; }
         public string? ProjectName { get; set; }
+        public int? IdProject { get; set; }
         
     }
 }

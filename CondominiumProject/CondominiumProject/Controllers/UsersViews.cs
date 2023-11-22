@@ -39,7 +39,8 @@ namespace CondominiumProject.Controllers
                     Picture = row["Picture"].ToString(),
                     Password = row["Password"].ToString(),
                     IDHabitation = Convert.ToInt32(row["IDHabitation"]),
-                    ProjectName = row["ProjectName"].ToString()
+                    ProjectName = row["ProjectName"].ToString(),
+                    IdProject = Convert.ToInt32(row["IdProject"])
                 });
             }
 

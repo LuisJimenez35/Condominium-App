@@ -67,6 +67,37 @@ namespace CondominiumProject.Controllers
                 }
             }
 
+            List<VisitDetail> visitDetails = new List<VisitDetail>();
+            foreach (var user in users)
+            {
+                var visitParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("IDHabitation", user.IDHabitation),
+                    new SqlParameter("IDProject", user.IdProject)
+                };
+
+                var visitResult = DatabaseHelper.ExecuteQuery("spGetVisitDetail", visitParameters);
+
+                foreach (DataRow visitRow in visitResult.Rows)
+                {
+                    visitDetails.Add(new VisitDetail()
+                    {
+                        DNI = visitRow["DNI"].ToString(),
+                        FirstName = visitRow["FirstName"].ToString(),
+                        LastName = visitRow["LastName"].ToString(),
+                        VehicleMarc = visitRow["VehicleMarc"].ToString(),
+                        VehicleModel = visitRow["VehicleModel"].ToString(),
+                        VehicleColor = visitRow["VehicleColor"].ToString(),
+                        VehiclePlate = visitRow["VehiclePlate"].ToString(),
+                        IDHabitation = Convert.ToInt32(visitRow["IDHabitation"]),
+                        VisitDate = Convert.ToDateTime(visitRow["VisitDate"]),
+                        VisitTime = TimeSpan.Parse(visitRow["VisitTime"].ToString()),
+                        IDProject = Convert.ToInt32(visitRow["IDProject"])
+                    });
+                }
+            }
+            
+            ViewBag.VisitDetails = visitDetails;
             ViewBag.Vehicles = vehicles;
             ViewBag.Users = users;
             return View();

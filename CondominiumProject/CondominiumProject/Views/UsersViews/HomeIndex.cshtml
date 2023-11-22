@@ -114,9 +114,9 @@
                         <tbody>
 
                             <tr>
-                                <th scope="row">12-23-25</th>
-                                <td>12:30</td>
-                                <td>Karla Jimenez</td>
+                                <th scope="row">@ViewBag.VisitDetails[0].VisitDate</th>
+                                <td>@ViewBag.VisitDetails[0].VisitTime</td>
+                                <td>@ViewBag.VisitDetails[0].FirstName @ViewBag.VisitDetails[0].LastName</td>
                                 <td>
                                     <button style="font-size:14px" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Visit Information</button>
                                 </td>

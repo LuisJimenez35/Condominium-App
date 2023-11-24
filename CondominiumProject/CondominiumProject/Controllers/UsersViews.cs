@@ -96,7 +96,32 @@ namespace CondominiumProject.Controllers
                     });
                 }
             }
-            
+
+            List<FastVisitss> fastVisitsses = new List<FastVisitss>();
+            foreach (var user in users)
+            {
+                var fastVisitParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("IDHabitation", user.IDHabitation),
+                    new SqlParameter("IDProject", user.IdProject)
+                };
+
+                var fastVisitResult = DatabaseHelper.ExecuteQuery("spGetFastVisit", fastVisitParameters);
+
+                foreach (DataRow fastVisitRow in fastVisitResult.Rows)
+                {
+                    fastVisitsses.Add(new FastVisitss()
+                    {
+                        ServiceName = fastVisitRow["ServiceName"].ToString(),
+                        Category = fastVisitRow["Category"].ToString(),
+                        FastVisitDate = Convert.ToDateTime(fastVisitRow["FastVisitDate"]),
+                        IDHabitation = Convert.ToInt32(fastVisitRow["IDHabitation"]),
+                        IDProject = Convert.ToInt32(fastVisitRow["IDProject"])
+                    });
+                }
+            }
+
+            ViewBag.FastVisitsses = fastVisitsses;
             ViewBag.VisitDetails = visitDetails;
             ViewBag.Vehicles = vehicles;
             ViewBag.Users = users;

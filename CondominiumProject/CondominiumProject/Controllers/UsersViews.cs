@@ -15,6 +15,11 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
+        public IActionResult GenerateQrCode()
+        {
+            return View();
+        }
+
         public IActionResult HomeIndex(string email)
         {
             List<Users> users = new List<Users>();

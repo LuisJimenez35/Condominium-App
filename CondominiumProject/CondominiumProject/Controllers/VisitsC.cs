@@ -2,7 +2,15 @@
 using CondominiumProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QRCoder;
 using System.Data.SqlClient;
+using System;
+using System.IO;
+using System.Drawing;
+using System.Collections.Generic;
+using static QRCoder.PayloadGenerator;
+
+
 
 namespace CondominiumProject.Controllers
 {
@@ -46,6 +54,37 @@ namespace CondominiumProject.Controllers
 
         }
 
+        
+
+        public IActionResult GenerateQrCode(string email)
+        {
+            Random random = new Random();
+            int numeroAleatorio = random.Next(1000, 10000);
+
+            Console.WriteLine($"Número aleatorio de 4 dígitos: {numeroAleatorio}");
+            
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(numeroAleatorio.ToString(), QRCodeGenerator.ECCLevel.Q);
+
+            QRCode qrCode = new(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+
+            MemoryStream ms = new MemoryStream();
+            qrCodeImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            byte[] byteImage = ms.ToArray();
+       
+            ViewBag.Image = "data:image/png;base64," + Convert.ToBase64String(byteImage);
+            ViewBag.Number = numeroAleatorio;
+
+            return View("~/Views/UsersViews/GenerateQrCode.cshtml", new { email });
+
+        }
+
+
+
+
+
+
         private int ValidateAndInsertVisit(string DNI, string FirstName, string LastName, string Marc, string Model, string Color, string Plate, string Date, string Hour, string email,string IDHabitation, string IdProject)
         {
             var queryParameters = new List<SqlParameter>
@@ -67,5 +106,7 @@ namespace CondominiumProject.Controllers
 
             return Convert.ToInt32(result.Rows[0]["Result"]);
         }
+
+
     }
 }

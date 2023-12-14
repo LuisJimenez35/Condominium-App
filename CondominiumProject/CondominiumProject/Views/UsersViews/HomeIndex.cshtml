@@ -115,7 +115,7 @@
                                     <td>@item.VisitTime</td>
                                     <td>@item.FirstName @item.LastName</td>
                                     <td>
-                                        <button style="font-size:14px" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Visit Information</button>
+                                        <button style="font-size:14px" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.DNI">Visit Information</button>
                                     </td>
 
                                 </tr>
@@ -313,67 +313,77 @@
             </div>
         </div>
 
-
-        <div class="modal" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fs-5" id="exampleModalLabel">Visit Information</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card">
-                            <form asp-action="GenerateQrCode" asp-controller="VisitsC">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><h5 class="card-title">Karla Jimenez</h5></li>
-                                    <li class="list-group-item"><p class="card-text"><p class="tile_card">Visit DNI<br>112323342</p></li>
-                                    <li class="list-group-item">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Marc</th>
-                                                    <th scope="col">Plate</th>
-                                                    <th scope="col">Model</th>
-                                                    <th scope="col">Color</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Toyota</th>
-                                                    <td>883232</td>
-                                                    <td>Prado</td>
-                                                    <td>Black</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Hour</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>12-23-25</td>
-                                                    <td>12:30</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <button type="submit" class="btn btn-primary">Create Visit Code</button>
-                                        <input name="email" type="hidden" class="form-control" value="@ViewBag.Users[0].Email">
-                                    </li>
-                                </ul>
-                            </form>
+        @foreach (var item in ViewBag.VisitDetails)
+        {
+            <div class="modal" id="exampleModal_@item.DNI" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title fs-5" id="exampleModalLabel">Visit Information</h5>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div class="modal-body">
+                            <div class="card">
+                                <form asp-action="GenerateQrCode" asp-controller="VisitsC">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><h5 name="Name" class="card-title">@item.FirstName @item.LastName</h5></li>
+                                        <li class="list-group-item"><p class="card-text"><p class="tile_card">Visit DNI<br>@item.DNI</p></li>
+                                        <li class="list-group-item">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Marc</th>
+                                                        <th scope="col">Plate</th>
+                                                        <th scope="col">Model</th>
+                                                        <th scope="col">Color</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">@item.VehicleMarc</th>
+                                                        <td>@item.VehiclePlate</td>
+                                                        <td>@item.VehicleModel</td>
+                                                        <td>@item.VehicleColor</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Date</th>
+                                                        <th scope="col">Hour</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@item.VisitDate</td>
+                                                        <td>@item.VisitTime</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <input name="FullName" type="hidden" class="form-control" value="@item.FirstName @item.LastName">
+                                            <input name="DNI" type="hidden" class="form-control" value="@item.DNI">
+                                            <input name="Date" type="hidden" class="form-control" value="@item.VisitDate">
+                                            <input name="Hour" type="hidden" class="form-control" value="@item.VisitTime">
+                                            <input name="IDHabitation" type="hidden" class="form-control" value="@ViewBag.Users[0].IDHabitation">
+                                            <input name="ProjectName" type="hidden" class="form-control" value="@ViewBag.Users[0].ProjectName">
+                                            <input name="Plate" type="hidden" class="form-control" value="@item.VehiclePlate">
+                                            <input name="email" type="hidden" class="form-control" value="@ViewBag.Users[0].Email">
+                                            <button type="submit" class="btn btn-primary">Create Visit Code</button>
+
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
 
     </div>
 

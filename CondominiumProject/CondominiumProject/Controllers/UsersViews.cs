@@ -15,6 +15,7 @@ namespace CondominiumProject.Controllers
             return View();
         }
 
+        //View GenerateQrCode
         public IActionResult GenerateQrCode()
         {
             return View();

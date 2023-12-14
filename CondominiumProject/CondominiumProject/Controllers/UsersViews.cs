@@ -127,6 +127,34 @@ namespace CondominiumProject.Controllers
                 }
             }
 
+            List<FavoriteVisits> favoriteVisits = new List<FavoriteVisits>();
+            foreach (var user in users)
+            {
+                var favoriteVisitParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("IDHabitation", user.IDHabitation),
+                };
+
+                var favoriteVisitResult = DatabaseHelper.ExecuteQuery("spGetFavortiteVisit", favoriteVisitParameters);
+
+                foreach (DataRow favoriteVisitRow in favoriteVisitResult.Rows)
+                {
+                    favoriteVisits.Add(new FavoriteVisits()
+                    {
+                        FirstName = favoriteVisitRow["FirstName"].ToString(),
+                        LastName = favoriteVisitRow["LastName"].ToString(),
+                        Kinship = favoriteVisitRow["Kinship"].ToString(),
+                        VehicleMarc = favoriteVisitRow["VehicleMarc"].ToString(),
+                        VehicleModel = favoriteVisitRow["VehicleModel"].ToString(),
+                        VehicleColor = favoriteVisitRow["VehicleColor"].ToString(),
+                        VehiclePlate = favoriteVisitRow["VehiclePlate"].ToString(),
+                        IDHabitation = Convert.ToInt32(favoriteVisitRow["IDHabitation"]),
+                    });
+                }
+            }
+
+
+            ViewBag.FavoriteVisits = favoriteVisits;
             ViewBag.FastVisitsses = fastVisitsses;
             ViewBag.VisitDetails = visitDetails;
             ViewBag.Vehicles = vehicles;

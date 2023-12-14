@@ -246,16 +246,41 @@
                             </div>
                             <hr>
                             <label for="inputVistVehicle1" class="form-label">Select Favorite Visits</label>
+                            @foreach (var item in ViewBag.FavoriteVisits)
+                            {
                             <div class="row">
                                 <div class="col">
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected>Favorite Visits</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                            <option value="1">@item.FirstName @item.Kinship</option>
+                                        
                                     </select>
+
+
+                                        <script>
+                                            const select = document.getElementById('favoriteVisitsSelect');
+                                            const dniInput = document.querySelector('input[name="DNI"]');
+                                            const firstNameInput = document.querySelector('input[name="FirstName"]');
+                                            const kinshipInput = document.querySelector('input[name="Kinship"]');
+
+                                       
+                                            select.addEventListener('change', function () {
+                                                
+                                                const selectedOption = select.options[select.selectedIndex];
+
+                                                const selectedDNI = selectedOption.getAttribute('data-dni');
+                                                const selectedFirstName = selectedOption.getAttribute('data-firstname');
+                                                const selectedKinship = selectedOption.getAttribute('data-kinship');
+
+                                                dniInput.value = selectedDNI;
+                                                firstNameInput.value = selectedFirstName;
+                                                kinshipInput.value = selectedKinship;
+                                            });
+                                        </script>
+
                                 </div>
                             </div>
+                            }
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Create Visit</button>

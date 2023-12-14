@@ -32,7 +32,8 @@ namespace CondominiumProject.Controllers
             return View();
 		}
 
-		//Obtener lista de proyectos habitacionales
+
+
 		public List<HabitationalProjects> GetHabitationalProject()
 		{
 			List<HabitationalProjects> projectslist = new List<HabitationalProjects>();

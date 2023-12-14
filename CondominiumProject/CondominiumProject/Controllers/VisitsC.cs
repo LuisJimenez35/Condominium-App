@@ -169,9 +169,6 @@ namespace CondominiumProject.Controllers
             return 0;
         }
 
-
-
-
         private int ValidateAndInsertVisit(string DNI, string FirstName, string LastName, string Marc, string Model, string Color, string Plate, string Date, string Hour, string email, string IDHabitation, string IdProject)
         {
             var queryParameters = new List<SqlParameter>
